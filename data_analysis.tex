@@ -1,0 +1,1561 @@
+\documentclass[12pt]{article}
+\usepackage[portuguese]{babel}
+\usepackage{csquotes}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+
+\usepackage{lmodern}
+\newcommand\myfontsize{\fontsize{25pt}{25pt}\selectfont}
+\usepackage[a4paper, tmargin=3cm, rmargin=3cm, bmargin=3cm, lmargin=3cm]{geometry}
+\usepackage[normalem]{ulem}
+  
+\usepackage[T1]{fontenc} % special characters
+%\usepackage[backend=bibtex, sorting=none]{biblatex}
+%\addbibresource{rbib}
+%\usepackage[natbibapa]{apacite} % APA
+\usepackage{natbib}
+%\usepackage[alf]{abntex2cite}
+%\usepackage{abntex2cite}
+
+\usepackage{fontspec}
+\usepackage[shortlabels]{enumitem}
+\usepackage{hologo}
+\usepackage{ragged2e}
+\usepackage{nicefrac}
+\usepackage{ulem}
+
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{caption}    
+
+
+\usepackage[usenames,dvipsnames, table]{xcolor}
+
+\renewcommand{\figurename}{Gráfico}
+\renewcommand{\tablename}{Tabela}
+
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{graphicx}
+\newcommand\sbullet[1][.5]{\mathbin{\vcenter{\hbox{\scalebox{#1}{$\bullet$}}}}}
+
+\usepackage{pdflscape}
+\usepackage{everypage}
+\newcommand{\Lpagenumber}{\ifdim\textwidth=\linewidth\else\bgroup % defining the number at the bottom of a landscapepage
+  \dimendef\margin=0 %use \margin instead of \dimen0
+  \ifodd\value{page}\margin=\oddsidemargin
+  \else\margin=\evensidemargin
+  \fi
+  \raisebox{\dimexpr -\topmargin-\headheight-\headsep-0.5\linewidth}[0pt][0pt]{%
+    \rlap{\hspace{\dimexpr \margin+\textheight+\footskip}%
+    \llap{\rotatebox{90}{\thepage}}}}%
+\egroup\fi}
+\AddEverypageHook{\Lpagenumber}%
+
+
+\usepackage[colorlinks=True]{hyperref}
+\hypersetup{
+allcolors=blue,
+}
+
+%
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{thmtools}
+\declaretheoremstyle[
+spaceabove=6pt, spacebelow=6pt,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.6em,
+headpunct=:
+]{mystyle}
+\declaretheorem[style=mystyle, name=Hypothesis, preheadhook={\renewcommand{\thehyp}{H\textsubscript{\arabic{hyp}}}}]{hyp}
+
+\usepackage{cleveref}
+\crefname{hyp}{hypothesis}{hypotheses}
+\Crefname{hyp}{Hypothesis}{Hypotheses}
+%
+
+\usepackage{mwe, tikz}
+\usetikzlibrary{trees}
+\usepackage{incgraph}
+\renewcommand{\contentsname}{SUMÁRIO}
+\renewcommand{\listfigurename}{LISTA DE GRÁFICOS}
+\renewcommand{\listtablename}{LISTA DE TABELAS}
+
+\usepackage{eso-pic, graphicx}
+\usepackage{transparent}
+\usepackage{setspace}
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+\begin{document}
+\thispagestyle{empty}
+\AddToShipoutPictureBG*{%
+\includegraphics[width=\paperwidth,height=\paperheight]{gráficos/pop_rua_capa.pdf}%
+}
+\begin{center}
+{\includegraphics[scale=0.06]{gráficos/polos_logo.png}}
+\end{center}
+
+
+%CAPA
+\begin{minipage}{5.64cm}
+%\hfill
+\vspace{0.3cm}
+{\textcolor{RedOrange}{\Large\textbf{polos de cidadania}}}
+\end{minipage}
+
+\begin{center}
+\vspace{5.3cm}
+{\textcolor{RedOrange}{\Huge\textbf{População em Situação de Rua:}}}\\
+\vspace{0.1cm}
+{\textcolor{RedOrange}{\LARGE\textbf{Violações de Direitos e (de) Dados}}}\\
+\vspace{0.1cm}
+{\textcolor{RedOrange}{\LARGE\textbf{Relacionados à Aplicação do}}}
+\vspace{0.1cm}
+{\textcolor{RedOrange}{\LARGE\textbf{CadÚnico em Belo Horizonte, Minas Gerais}}}
+\end{center}
+
+\vspace{3cm}
+
+\hfill%
+\begin{minipage}[t]{12cm}
+\begin{flushright}
+{\textcolor{RedOrange}{\large\textbf{André Luiz Freitas Dias}}}\\
+\vspace{0.2cm}
+{\textcolor{RedOrange}{\large\textbf{Wellington Migliari}}}\\
+\vspace{0.2cm}
+{\textcolor{RedOrange}{\large\textbf{Gabriel Coelho Mendonça Rodrigues}}}\\
+\vspace{0.2cm}
+{\textcolor{RedOrange}{\large\textbf{Lucas do Santos Poleze}}}
+\end{flushright}
+\end{minipage}
+\newpage
+
+% Folha de Rosto
+\thispagestyle{empty}
+
+\begin{center}
+\vspace{2cm}
+{\Huge\textsc\textbf{População em Situação de Rua:}}\\
+\vspace{0.5cm}
+{\Large\textsc\textbf{Violações de Direitos e (de) Dados Relacionados}}\\
+\vspace{0.1cm}
+{\Large\textsc\textbf{à Aplicação do CadÚnico em Belo Horizonte,}}\\
+\vspace{0.1cm}
+{\Large\textsc\textbf{Minas Gerais}}\\
+\end{center}
+
+\hfill%
+\begin{minipage}{9cm}
+\vspace{7cm}
+Nota Técnica elaborada pelo Programa Polos de Cidadania da UFMG, por meio da Plataforma Aberta de Atenção em Direitos Humanos (PADHu), com análises sobre a aplicação do Cadastro Único (CadÚnico) para Programas Sociais do Governo Federal com a população em situação de rua de Belo Horizonte.
+\end{minipage}
+
+\begin{center}
+\vspace{8cm}
+{\normalsize{Setembro}}\\
+{\normalsize{2021}}\\
+\end{center}
+\newpage
+
+% Ficha Catalográfica
+
+\thispagestyle{empty}
+\vspace{5cm}
+{\textsc\textbf{Ficha Catalográfica da Nota Técnica}}
+\begin{table}[htbp]
+    \centering
+\vspace{4cm}
+    	\tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.2}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{|rrrr|}
+    \hline
+         &      &      &  \\
+         & \multicolumn{1}{l}{D541d} & \multicolumn{1}{l}{DIAS, André Luiz Freitas; MIGLIARI, Wellington; RODRIGUES,} &  \\
+         & \multicolumn{1}{l}{} 	    & \multicolumn{1}{l}{Gabriel Coelho Mendonça; POLEZE, Lucas dos Santos.} &  \\
+         & \multicolumn{1}{l}{R425d} & \multicolumn{1}{l}{População em Situação de Rua: Violações de Direitos e (de)} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{Dados Relacionados à Aplicação do CadÚnico em Belo Horizonte,} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{Minas Gerais, Programa Polos de Cidadania, Faculdade de Direito} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{da Universidade Federal de Minas Gerais. André Luiz Freitas Dias,} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{Wellington Migliari, Gabriel Coelho Mendonça Rodrigues, Lucas dos} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{Santos Poleze. Belo Horizonte, MG: Marginália. Comunicação, 2021.} &  \\
+         & \multicolumn{1}{l}{} &  \multicolumn{1}{l}{p. 88.} &  \\
+         & \multicolumn{1}{l}{ISBN:} &      &  \\
+         & \multicolumn{1}{l}{} & \multicolumn{1}{l}{I. População em Situação de Rua II. Dados do CadÚnico} &  \\
+         & \multicolumn{1}{l}{} & \multicolumn{1}{l}{III. Violação de Direitos IV. Direitos Humanos V. Direito} &  \\
+         & \multicolumn{1}{l}{} & CDD. 341.481 &  \\
+         &      &      &  \\
+    \hline
+    \end{tabular}%
+     \end{adjustbox}
+  \label{tab:addlabel}%
+\end{table}%
+
+\hfill%
+\begin{minipage}{18cm}
+\vspace{2cm}
+\noindent\textbf{Projeto Gráfico} W. Migliari \textsc{\hologo{LaTeX}}\\
+%\vspace{0.2cm}
+\noindent\textbf{Capa} W. Migliari QGIS\\
+%\vspace{0.2cm}
+\noindent\textbf{Instagram} @polosdecidadania\\
+\vspace{2cm}
+\end{minipage}
+
+\newpage
+
+% Ficha Técnica
+
+\thispagestyle{empty}
+
+\vspace{1cm}
+\hfill\allowbreak
+\begin{minipage}{\textwidth}
+\noindent\textbf{FICHA TÉCNICA}\\
+\vspace{2.5cm}
+
+\noindent\textbf{Coordenação Geral do Programa Transdisciplinar Polos de Cidadania da UFMG}\\
+
+Prof. Dr. André Luiz Freitas Dias\\
+Prof. Fernando Antônio de Melo (Dramaturgo Fernando Limoeiro)\\
+Profa. Dra. Marcella Furtado de Magalhães Gomes\\
+Profa. Dra. Maria Fernanda Salcedo Repolês\\
+Profa. Dra. Miracy Barbosa de Sousa Gustin\\
+Profa. Dra. Sielen Barreto Caldas de Vilhena\\
+\vspace{1cm}
+
+\noindent\textbf{Coordenação da Plataforma Aberta de Atenção em Direitos Humanos (PADHu)}\\
+
+Prof. Dr. André Luiz Freitas Dias\\
+Prof. Dra. Maria Fernanda Salcedo Repolês
+\vspace{1cm}
+
+\noindent\textbf{Pesquisadores-Extensionistas Responsáveis pela Nota Técnica}\\
+
+Prof. Dr. André Luiz Freitas Dias\\
+Dr. Wellington Migliari\\
+Gabriel Coelho Mendonça Rodrigues\\
+Lucas dos Santos Poleze\\
+\end{minipage}
+
+% Índice, Lista de Figuras e Tabelas
+
+\newpage
+\thispagestyle{empty}
+\doublespacing
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\singlespacing
+
+\newpage
+
+\setcounter{section}{0}
+\setcounter{page}{1}
+\doublespacing
+
+\section*{Apresentação}
+\vspace{1cm}
+
+O Polos de Cidadania é um programa transdisciplinar de extensão, ensino e pesquisa social aplicada, criado em 1995, na Faculdade de Direito da Universidade Federal de Minas Gerais (UFMG), voltado para (1) a efetivação dos direitos humanos de pessoas, famílias e comunidades vulnerabilizadas e em trajetória de risco social e ambiental e (2) a construção de conhecimento a partir do diálogo entre os diferentes saberes.\\
+
+A atuação do Polos-UFMG é estruturada a partir de multiplataformas de conhecimento, comunicação e produções técnico-científicas que reúnem projetos de extensão, ensino e pesquisa social aplicada construídos coletivamente e de maneira compartilhada com pessoas em situação de rua; mulheres, crianças e famílias em condições históricas e diversas de exclusão e desigualdade social, violações de direitos e em risco quanto às suas maternagens e paternagens (Plataforma Aberta de Atenção em Direitos Humanos – PADHu) e com comunidades vulnerabilizadas por desastres e conflitos urbanos e hidro-socioambientais (Plataforma Áporo).\\
+
+Com projetos desenvolvidos em Belo Horizonte e sua região metropolitana, Conceição do Mato  Dentro, Dom Joaquim, Brumadinho, Barão de Cocais, André do Mato Dentro (distrito de Santa Bárbara), São Sebastião das Águas Claras (distrito de Nova Lima) e outras regiões e cidades do Estado de Minas Gerais, o Polos-UFMG conta também com outras duas multiplataformas para a realização dos seus trabalhos, sempre em diálogo com a PADHu, a ÁPORO, pessoas, famílias e comunidades co-partícipes do Programa, visando o fortalecimento das suas centralidades, autonomias (individuais, coletivas e políticas) e protagonismos. São elas: a Trupe a Torto e a Direito, dirigida pelo professor e dramaturgo Fernando Limoeiro, em uma parceria de 24 anos estabelecida entre a Faculdade de Direito e o Teatro Universitário da UFMG, e a Escola de Direitos Humanos e Cidadania.\\
+
+Contando com uma qualificada equipe de pesquisadores-extensionistas formada por professores da UFMG, profissionais e estudantes de diversas áreas do conhecimento como Direito, Teatro,
+Psicologia, Arquitetura e Urbanismo, Belas Artes, Ciência da Computação, Comunicação Social, Sociologia, Antropologia, Enfermagem, Administração, Gestão Pública, Ciências do Estado, Relações Internacionais e Ciência da Informação, o Polos-UFMG desenvolve os seus projetos e ações a partir de uma perspectiva dialógica, crítica e sentipensante, utilizando como principais referências metodológicas a pesquisa-ação e a pesquisa engajada, o teatro popular de rua, as cartografias sociais e afetivas, a mediação de conflitos e as redes de cuidado e atenção em direitos humanos. 
+
+\newpage
+
+\section{Contexto de Elaboração, Argumentos Iniciais e Proposta da Nota Técnica}
+\label{contexto_elaboracao}
+\vspace{1cm}
+
+A reivindicação da população em situação de rua pela sua inclusão no Censo realizado pelo IBGE é antiga, completamente legítima e esperamos que haja uma sentença final favorável à Ação Civil Pública, ajuizada, em 21 de fevereiro de 2018, pelos Defensores Públicos Federais, Dr. Thales Arcoverde Treiger e Dr. Renan Vinicius Sotto Mayor (PAJ 2017/016-010873; PROCESSO Nº 0019792-38.2018.4.02.5101/RJ).\\
+
+Como garantir direitos às pessoas em situação de rua no país e a elaboração, implantação, monitoramento e avaliação de políticas públicas em todo território nacional, sem informações confiáveis, estáveis e transparentes sobre as realidades vivenciadas por essa população?\\ 
+
+Tendo em vista a importância de informações referentes ao fenômeno da população em situação de rua no Brasil, conforme descrito no Artigo 7º do Decreto nº 7.053, de 23 de dezembro de 2009, destacaremos três dos quatorze objetivos propostos para a Política Nacional para a População em Situação de Rua para apresentação do argumento inicial desta Nota Técnica. São eles:
+
+\begin{trivlist}\leftskip=2.5cm
+\item III - instituir a contagem oficial da população em situação de rua;
+\item IV - produzir, sistematizar e disseminar dados e indicadores sociais, econômicos e culturais sobre a rede existente de cobertura de serviços públicos à população em situação de rua;
+\item X – criar meios de articulação entre o Sistema Único de Assistência Social e o Sistema Único de Saúde para qualificar a oferta de serviços.
+\end{trivlist}
+
+Nosso argumento inicial é que, considerando a complexidade e dinamicidade do fenômeno da população em situação de rua em um país como o Brasil, mesmo que essas pessoas sejam incluídas nos Censos realizados pelo IBGE, assim como em estudos diagnósticos regionais e locais, \textbf{faz-se imprescindível o fortalecimento das bases de dados do Cadastro Único para Programas Sociais do Governo Federal (CadÚnico) e do Sistema Único de Saúde (SUS) a partir da atualização, alimentação constante e estabilidade de informações fidedignas relativas às pessoas em situação de rua nos municípios brasileiros}.\\
+
+De acordo com o Artigo 2º do Decreto nº 6.135/2007, que dispõe sobre o Cadastro Único para Programas Sociais do Governo Federal, o CadÚnico é:
+
+\begin{trivlist}\leftskip=2.5cm
+\item um instrumento de identificação e caracterização sócio-econômica das famílias brasileiras de baixa renda, a ser obrigatoriamente utilizado para seleção de beneficiários e integração de programas sociais do Governo Federal voltados ao atendimento desse público.
+\end{trivlist}
+
+Criado em 2001, regulamentado pelo Decreto nº 6.135/2007, e tendo sua gestão disciplinada pela Portaria MDS nº 177/2011, o CadÚnico tem como objetivos:
+
+%\hfill\allowbreak
+%\begin{minipage}{13cm}
+\begin{trivlist}\leftskip=2.5cm
+%\begin{itemize}
+\item {$\bullet$ Identificar e caracterizar os segmentos socialmente mais vulneráveis da população;}
+\item {$\bullet$ Constituir uma rede de promoção e proteção social que articule as políticas existentes nos territórios;}
+\item {$\bullet$ Colaborar para o planejamento e a implementação de políticas públicas voltadas às famílias de baixa renda;}
+\item {$\bullet$ Contribuir com a criação de indicadores sobre as várias dimensões de pobreza e vulnerabilidade nos diferentes territórios;}
+\item {$\bullet$ Convergir e fortalecer esforços para o atendimento prioritário das famílias em situação de vulnerabilidade \citep{cadunico}.}
+\end{trivlist}
+%\end{itemize}
+%\end{minipage}
+
+\vspace{0.5cm}
+
+Segundo o Manual do Pesquisador do Cadastro Único \citep{cadunico}, com orientações para pesquisas no Cadastro Único para Programas Sociais do Governo Federal, o CadÚnico é mais que uma base de dados da população vulnerabilizada no país, como a população em situação de rua, sendo uma importante ferramenta para visibilização das carências e necessidades de pessoas e famílias em cada localidade do Brasil e para integração de ações intersetoriais, estaduais e municipais, voltadas à inclusão social e efetivação de direitos previstos na nossa Constituição de 1988.\\
+
+Por meio do CadÚnico, pessoas e famílias vulnerabilizadas no país podem acessar diversos programas sociais, como o Bolsa Família (PBF), o Benefício de Prestação Continuada (BPC), o Auxílio Emergencial, dentre outros. Sua gestão tem por princípios a cooperação e o compartilhamento de esforços e responsabilidades entre a União, os estados, o Distrito Federal e os municípios.
+
+\begin{trivlist}\leftskip=2.5cm
+\item Da mesma forma como ocorreu com a gestão da maioria dos programas sociais implementados no Brasil após a Constituição de 1988, o município é um agente-chave, sendo responsável pela coleta das informações e contato direto com o público atendido. A União, por sua vez, desempenha papel de agente normatizador e regulador do instrumento, além de gerir a base nacional de dados e o sistema de entrada de informação, (através da Caixa Econômica Federal). Já os estados realizam funções de interlocução e apoio à gestão municipal \citep[p.~17]{cadunico}.
+\end{trivlist}
+
+Conforme mencionado acima, os governos municipais são atores importantíssimos na gestão do CadÚnico, tendo por principais atribuições: (1) a identificação das áreas onde residem as pessoas e famílias vulnerabilizadas; (2) a capacitação contínua dos entrevistadores, digitadores e de todos os profissionais envolvidos com o Cadastro Único, em parceria com os governos estaduais; (3) a coleta de informações por meio de visitas domiciliares, buscas ativas, mutirões e/ou postos de atendimento, fixos e/ou itinerantes\footnote{Os pontos de atendimento ``são locais disponibilizados pelos municípios para que as famílias compareçam a fim de se inscrever no Cadastro Único ou atualizar suas informações cadastrais. Os postos de atendimento são uma alternativa mais econômica e viável para alguns municípios. No entanto, custos de deslocamento e limitado acesso aos meios de informação por parte das famílias podem fazer com que a população mais vulnerável não busque este tipo de atendimento. \textbf{Esses postos podem ser fixos ou itinerantes}.” \citep[p.~30]{cadunico} (destaque presente no próprio documento)}, (4) a inclusão e a atualização dos dados das pessoas e famílias no Sistema, por meio do estabelecimento de rotinas de trabalho, a contínua comunicação e a divulgação de informações junto às comunidades; (5) a verificação de inconsistências cadastrais e a adoção de procedimentos de controle e prevenção de fraudes; (6) a disponibilização de canais para o recebimento de denúncias, dúvidas, reclamações e sugestões; (7) a manutenção da infraestrutura adequada à gestão da base de dados e ao cadastramento das pessoas e famílias em toda sua área de abrangência; (8) o adequado e seguro armazenamento e o sigilo das informações coletadas; (9) o acesso do Controle Social às informações cadastrais, assim como (10) o monitoramento de todo o processo de gestão do Cadastro \citep{cadunico}.\\
+
+A respeito das buscas ativas, tão necessárias para a gestão do CadÚnico, salientamos que tal estratégia:
+
+\begin{trivlist}\leftskip=2.5cm
+\item consiste em estabelecer parcerias e desenvolver ações para localizar as famílias de baixa renda que ainda não foram cadastradas. As parcerias devem envolver órgãos públicos, organizações da sociedade civil e lideranças comunitárias, entre outros, de modo a possibilitar a identificação e o cadastramento de todas as famílias de baixa renda existentes, principalmente aquelas que se encontram em situação de pobreza extrema.
+ \vspace{0.5cm}
+\item Com essa ação, o Cadastro Único tem se fortalecido como ferramenta de integração das políticas públicas voltadas à superação da extrema pobreza, garantindo o cadastramento de todas as famílias vulneráveis e a atualização periódica de seus dados.
+ \vspace{0.5cm}
+Os municípios e os estados também podem desenvolver parcerias, mapeando instituições e órgãos que poderão apoiar a inclusão de famílias em situação de vulnerabilidade, de acordo com a realidade local \citep[p.~28]{cadunico}.
+\end{trivlist}
+
+
+Como bem salienta \citep{cadunico} no Manual do Pesquisador do Cadastro Único:
+
+\begin{trivlist}\leftskip=2.5cm
+\item Os procedimentos gerais de coleta de dados são úteis para o cadastramento de todas as famílias. No entanto, para alguns grupos ou segmentos populacionais devem ser realizadas abordagens e estratégias específicas de cadastramento. O cadastramento diferenciado é direcionado às famílias com características próprias, de acordo com seu modo de vida, cultura, crenças e costumes, ou mesmo contextos que as levam a experimentar condições críticas de vulnerabilidade social.
+ \vspace{0.5cm}
+\item A Portaria nº 177/2011 prevê que alguns grupos populacionais devem ter atendimento diferenciado para inclusão no Cadastro Único. As estratégias de cadastramento diferenciado, inicialmente, se dirigiam às famílias quilombolas, indígenas, \textbf{às pessoas em situação de rua} e àquelas resgatadas do trabalho análogo ao de escravo. \citep[p.~63]{cadunico} (grifo nosso)
+\end{trivlist}
+
+
+Como demonstraremos neste documento, em plena pandemia da COVID-19 e de crise humanitária que assola o Brasil desde março de 2020, em especial as pessoas e famílias historicamente vulnerabilizadas no país, \textbf{a Prefeitura de Belo Horizonte não tem cumprido suas atribuições na gestão do CadÚnico, especialmente com a população em situação de rua}.\\ 
+
+\textbf{A proposta desta Nota Técnica é analisar os dados do CadÚnico referentes à população em situação de rua no Município de Belo Horizonte}. O recorte espacial do documento decorre do convite feito ao Programa Polos de Cidadania da UFMG pela Comissão de Direitos Humanos, Igualdade Racial e Defesa do Consumidor, da Câmara Municipal de Belo Horizonte, para participar de Audiência Pública, em 13/09/2021, que debaterá a situação da atualização do Cadastramento Único (CadÚnico) no município, segundo requerimento nº 988/2021, assinado pelas vereadoras Bella Gonçalves, Iza Lourença e Macaé Evaristo e pelo vereador Pedro Patrus.\\
+
+\newpage
+
+\section{População em Situação de Rua em Belo Horizonte}
+\label{pop_rua_bh}
+\vspace{1cm}
+
+O perfil da população em situação de rua em Belo Horizonte está subdividido na presente seção em dois eixos, conforme descrito no Organograma 1. Um deles corresponde à série histórica disponibilizada tanto pela Prefeitura de Belo Horizonte quanto pelo Cadastro Único para Programas Sociais do Governo Federal entre os meses de setembro de 2020 e junho de 2021. O outro relaciona-se aos dados tabulados de julho e agosto de 2021, extraídos do mecanismo de busca do Cadastro Único (CECAD)\footnote{Link de acesso ao mecanismo de busca CECAD do CadÚnico - \href{https://cecad.cidadania.gov.br/tab_cad.php}{CECAD 2.0 (cidadania.gov.br)}}. Contudo, ressaltamos alguns dos objetivos da Política Nacional para a População em Situação de Rua e seu Comitê Intersetorial de Acompanhamento e Monitoramento para esclarecer a razão de insistirmos na coleta constante de dados em forma de séries históricas, atualização de cadastros, publicação e estabilidade das informações colhidas. As estatísticas resultantes das entrevistas resguardam, naturalmente, o direito à proteção de dados das pessoas em situação de rua além de seu anonimato nos resultados das pesquisas acadêmico-científicas. Outro ponto a ser elucidado é quanto ao trabalho da Prefeitura de Belo Horizonte nas pesquisas sobre esse grupo vulnerável. Ela é a principal fonte de alimentação do CadÚnico e, segundo os parâmetros e recursos filiados do Índice de Gestão Descentralizada dos Municípios (IGD-M), deve responder diligentemente às demandas da população em situação de rua cumprindo disposições legais.\\        
+
+Nos incisos III e IV do Artigo 6º do Decreto nº 7.053 de 2009, estabelecem-se duas diretrizes extremamente relevantes para a articulação das políticas públicas nos três níveis da federação e a integração dessas políticas públicas em cada nível de governo. Para a efetivação dessas diretrizes é indispensável que a instituição da contagem oficial da população em situação de rua esteja atualizada de acordo com o Artigo 7º do mesmo dispositivo legal. A atualização do CadÚnico é entendida na presente Nota Técnica enquanto política pública que produz, sistematiza e dissemina dados bem como indicadores socioeconômicos e culturais sobre a ``a rede existente de cobertura de serviços públicos à população em situação de rua”. Portanto, como veremos na seção \ref{politica_morte}, a falta de séries históricas configura desvio de finalidade da Prefeitura de Belo Horizonte no âmbito da administração pública. Ainda sobre os meios de articulação previstos no Artigos 7º entre o Sistema Único de Assistência Social (SUAS) e o Sistema Único de Saúde (SUS) para qualificar a oferta de serviços, conforme exposto na seção \ref{contexto_elaboracao}, cabe ressaltar que tanto o SUAS quanto o SUS dependem da produção, análise e estabilidade dos dados de modo que possam orientar suas ações voltadas à população em situação de rua.\\
+
+Designaremos, nesta Nota Técnica, por \textbf{dados abertos} as séries históricas e apenas por \textbf{dados} os números das tabulações, como disponibilizado no mecanismo de busca do CadÚnico. Ressaltamos que o CadÚnico possui séries históricas, mas o acesso a essas tabelas não é aberto para a consulta por pessoa, mas somente por famílias. Portanto, a ideia é apontar algumas diferenças e semelhanças entre um e outro banco estatístico. Como o número de meses que compõe a série histórica analisada é igual a dez, escrevemos $n = 10$; já para os dados tabulados, meses de julho e agosto, $n = 2$. Quanto aos símbolos adotados,  $n$ se refere ao número de meses pesquisados nos dois tipos de dados, isto é, série histórica e tabulações. Assim, se o número de meses que compõe a série histórica analisada for igual a dez, indicamos $n = 10$; já para os dados tabulados, meses de julho e agosto, definimos $n = 2$. A barra à direita \textbf{``/”} significa \textbf{``e”} no organograma. Os diferentes tons de verde auxiliam na diferenciação da estrutura dos dados que foi incorporada na Nota Técnica.\\
+
+\vspace{1cm}
+
+\begin{figure}[H]
+\begin{center}
+{Organograma 1: Dados Abertos, Série Histórica, Números Tabulados e Diferentes Bancos de Dados}
+\vspace{2cm}
+% Set the overall layout of the tree
+\begingroup
+\small
+\tikzstyle{level 1}=[level distance=4.3cm, sibling distance=4.5cm]
+\tikzstyle{level 2}=[level distance=2.0cm, sibling distance=1.5cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=4em, text centered]
+\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
+
+% The sloped option gives rotated edge labels. Personally
+% I find sloped labels a bit difficult to read. Remove the sloped options
+% to get horizontal labels. 
+\begin{tikzpicture}[grow=right, sloped]
+\node[bag] {Dados}
+    child {
+        node[bag] {Tabulados}        
+            child {
+                node[end, label=right:
+                    {\textcolor{OliveGreen}{CadÚnico/Conhecer para Incluir}}] {}
+                edge from parent
+                node[above] {}
+                node[below]  {}
+            }
+            child {
+                node[end, label=right:
+                    {\textcolor{OliveGreen}{CadÚnico/CECAD 2.0}}] {}
+                edge from parent
+                node[above] {}
+                node[below]  {}
+            }
+            edge from parent 
+            node[above] {$n = 2$}
+            node[below]  {\textcolor{OliveGreen}{Jul/Ago 21}}
+    }
+    child {
+        node[bag] {Série Histórica}        
+        child {
+                node[end, label=right:
+                    {\textcolor{Green}{Portal Brasileiro dos Dados Abertos}}] {}
+                edge from parent
+                node[above] {}
+                node[below]  {}
+            }
+            child {
+                node[end, label=right:
+                    {\textcolor{Green}{Prefeitura de Belo Horizonte Dados Abertos}}] {}
+                edge from parent
+                node[above] {}
+                node[below]  {}
+            }
+        edge from parent         
+            node[above] {$n = 10$}
+            node[below]  {\textcolor{Green}{Set 20/Jun 21}}
+    };
+\end{tikzpicture}
+\endgroup
+\end{center}
+\end{figure}
+\vspace{1cm}
+
+\subsection{Sexo \& Renda}
+\label{sexo_renda}
+
+A visualização de séries históricas nos auxilia a compreender as dinâmicas relacionadas à população em situação de rua nos municípios. No Gráfico \ref{fig:sexo_renda} (a), percebe-se que a maior parte das pessoas em situação de rua em Belo Horizonte é do sexo masculino, acompanhando a tendência brasileira, como destacado no Relatório Técnico-Científico também elaborado pelo Programa Polos de Cidadania da UFMG e publicado em abril de 2021\footnote{O \textbf{Relatório Técnico-Científico: Dados Referentes ao Fenômeno da População em Situação de Rua no Brasil} pode ser acessado no link \href{https://polos.direito.ufmg.br/wp-content/uploads/2021/07/Relatorio-Incontaveis-2021.pdf}{Programa Polos de Cidadania}.}. Na Tabela \ref{tab:sexo}, podemos observar que as mulheres representam entre \nicefrac{1}{4} e \nicefrac{1}{3} da amostra para a série histórica no período de setembro de 2020 a junho de 2021. Contudo, ainda faltam pesquisas aplicadas mais detalhadas que analisem questões relacionadas à essa tendência.
+
+%%%
+\begin{figure}[H]
+\centering
+	\caption{Sexo \& Renda (a)}
+	\includegraphics[height=14cm, width=12cm]{gráficos/pop_rua_sexo.pdf}
+	\label{fig:sexo_renda}
+\end{figure}
+
+No Gráfico \ref{fig:sexo_renda} (b), temos constância de que mais de 90\% das pessoas em situação de rua têm uma renda que varia de 0 a 89 reais. Ao longo dos meses, é possível notar que esse número cresceu em relação às demais faixas de renda de acordo com a Tabela \ref{tab:renda}.
+
+%
+\begin{figure}[H]
+\centering
+	\caption{Sexo \& Renda (b)}
+	\includegraphics[height=14cm, width=12cm]{gráficos/pop_rua_renda.pdf}
+	\label{fig:sexo_renda2}
+\end{figure}
+
+%%%
+
+\textbf{As faixas em cinza que atravessam as tabelas indicam a duplicação de dados encontrados, tanto no Portal Brasileiro de Dados Abertos quanto na página da Prefeitura de Belo Horizonte “Dados Abertos”. Conforme salientamos na seção \ref{pop_rua_bh} desta Nota Técnica, as atribuições da Prefeitura de Belo Horizonte na gestão do CadÚnico preveem a verificação de inconsistências cadastrais e a adoção de procedimentos de controle e prevenção de fraudes, assim como a disponibilização transparente de dados confiáveis}.\\ 
+
+\textbf{Onde estão os outros dados da série histórica do CadÚnico referentes à população em situação de rua em Belo Horizonte? Por que a Prefeitura só disponibilizou os dados do período de setembro de 2020 a junho de 2021? Não foi possível identificar a duplicidade de informações na base de dados do CadÚnico, como facilmente percebida por nossa equipe técnica do Programa Polos de Cidadania da UFMG e indicada nesta Nota Técnica? Em outras partes e seções deste documento, evidenciaremos outras falhas da Prefeitura de Belo Horizonte no cumprimento das suas atribuições relativas à gestão do CadÚnico}.\\
+
+% Table generated by Excel2LaTeX from sheet 'Total'
+\begin{table}[htbp]
+  \centering
+  \caption{População em Situação de Rua, Série Histórica, Sexo}
+    	\tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.2}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{p{7.5em}lllll}
+\cmidrule{1-3}\cmidrule{5-6}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{Feminino} & \multicolumn{1}{c}{Masculino} \\
+\cmidrule{1-3}\cmidrule{5-6}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{1000} & \multicolumn{1}{c}{7976} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{996} & \multicolumn{1}{c}{7970} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{973} & \multicolumn{1}{c}{7529} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{997} & \multicolumn{1}{c}{7580} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{994} & \multicolumn{1}{c}{7625} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1007} & \multicolumn{1}{c}{7750} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1007} & \multicolumn{1}{c}{7750} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{1030} & \multicolumn{1}{c}{7871} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{871} & \multicolumn{1}{c}{7411} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{877} & \multicolumn{1}{c}{7497} \\
+\cmidrule{1-3}\cmidrule{5-6}    \multicolumn{1}{r}{} &      &      &      &      &  \\
+    \multicolumn{1}{r}{} &      &      &      &      &  \\
+    \multicolumn{1}{r}{} &      &      &      & \multicolumn{2}{c}{} \\
+\cmidrule{1-3}\cmidrule{5-6}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total (\%)} &      & \multicolumn{1}{c}{Feminino (\%)} & \multicolumn{1}{c}{Masculino (\%)} \\
+\cmidrule{1-3}\cmidrule{5-6}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.14} & \multicolumn{1}{c}{88.86} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.11} & \multicolumn{1}{c}{88.89} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.44} & \multicolumn{1}{c}{88.56} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.62} & \multicolumn{1}{c}{88.38} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.53} & \multicolumn{1}{c}{88.47} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.50} & \multicolumn{1}{c}{88.50} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.50} & \multicolumn{1}{c}{88.50} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{11.57} & \multicolumn{1}{c}{88.43} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{10.52} & \multicolumn{1}{c}{89.48} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{10.47} & \multicolumn{1}{c}{89.53} \\
+    \midrule
+    \multicolumn{6}{p{35em}}{Fonte: Portal Brasileiro dos Dados Abertos} \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:sexo}%
+\end{table}%
+
+Quanto à proporção das pessoas em situação de rua com renda entre 89 e 178 reais e 178 a 0.5 salário mínimo, também observamos uma queda no número de registros com esses respectivos rendimentos. Na Tabela \ref{tab:renda}, apenas entre 5 e 6\% das pessoas em situação de rua declararam renda superior a meio salário mínimo. Esse seguimento se manteve relativamente estável entre setembro e outubro de 2020, caindo em novembro do mesmo ano e voltando a encolher em maio de 2021.\\
+
+% Table generated by Excel2LaTeX from sheet 'Total'
+\begin{table}[htbp]
+  \centering
+  \caption{População em Situação de Rua, Série Histórica, Renda}
+  	\tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.2}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{p{4.585em}llllll}
+\cmidrule{1-2}\cmidrule{4-7}    \multicolumn{1}{c}{Mês} & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{0 a 89} & \multicolumn{1}{c}{89 a 178} & \multicolumn{1}{c}{178 a 0.5*} & \multicolumn{1}{c}{Acima de 0.5*} \\
+\cmidrule{1-2}\cmidrule{4-7}    \multicolumn{1}{c}{Set 2020} & \multicolumn{1}{c}{8,976} &      & \multicolumn{1}{c}{8,169} & \multicolumn{1}{c}{98} & \multicolumn{1}{c}{178} & \multicolumn{1}{c}{531} \\
+    \multicolumn{1}{c}{Out 2020} & \multicolumn{1}{c}{8,966} &      & \multicolumn{1}{c}{8,158} & \multicolumn{1}{c}{95} & \multicolumn{1}{c}{180} & \multicolumn{1}{c}{533} \\
+    \multicolumn{1}{c}{Nov 2020} & \multicolumn{1}{c}{8,502} &      & \multicolumn{1}{c}{7,743} & \multicolumn{1}{c}{89} & \multicolumn{1}{c}{161} & \multicolumn{1}{c}{509} \\
+    \multicolumn{1}{c}{Dez 2020} & \multicolumn{1}{c}{8,577} &      & \multicolumn{1}{c}{7,800} & \multicolumn{1}{c}{97} & \multicolumn{1}{c}{164} & \multicolumn{1}{c}{516} \\
+    \multicolumn{1}{c}{Jan 2021} & \multicolumn{1}{c}{8,619} &      & \multicolumn{1}{c}{7,836} & \multicolumn{1}{c}{99} & \multicolumn{1}{c}{180} & \multicolumn{1}{c}{504} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} & \multicolumn{1}{c}{8,757} &      & \multicolumn{1}{c}{7,972} & \multicolumn{1}{c}{93} & \multicolumn{1}{c}{183} & \multicolumn{1}{c}{509} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} & \multicolumn{1}{c}{8,757} &      & \multicolumn{1}{c}{7,972} & \multicolumn{1}{c}{93} & \multicolumn{1}{c}{183} & \multicolumn{1}{c}{509} \\
+    \multicolumn{1}{c}{Abr 2021} & \multicolumn{1}{c}{8,901} &      & \multicolumn{1}{c}{8,114} & \multicolumn{1}{c}{92} & \multicolumn{1}{c}{182} & \multicolumn{1}{c}{513} \\
+    \multicolumn{1}{c}{Mai 2021} & \multicolumn{1}{c}{8,282} &      & \multicolumn{1}{c}{7,674} & \multicolumn{1}{c}{63} & \multicolumn{1}{c}{107} & \multicolumn{1}{c}{438} \\
+    \multicolumn{1}{c}{Jun 2021} & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{7,753} & \multicolumn{1}{c}{64} & \multicolumn{1}{c}{111} & \multicolumn{1}{c}{446} \\
+\cmidrule{1-2}\cmidrule{4-7}    \multicolumn{1}{r}{} &      &      &      &      &      &  \\
+    \multicolumn{1}{r}{} &      &      &      &      &      &  \\
+    \multicolumn{1}{r}{} &      &      & \multicolumn{4}{c}{} \\
+\cmidrule{1-2}\cmidrule{4-7}    \multicolumn{1}{c}{Mês} & \multicolumn{1}{c}{Total (\%)} &      & \multicolumn{1}{c}{0 a 89 (\%)} & \multicolumn{1}{c}{89 a 178 (\%)} & \multicolumn{1}{c}{178 a 0.5* (\%)} & \multicolumn{1}{c}{Acima de 0.5* (\%)} \\
+\cmidrule{1-2}\cmidrule{4-7}    \multicolumn{1}{c}{Set 2020} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{91.01} & \multicolumn{1}{c}{1.09} & \multicolumn{1}{c}{1.98} & \multicolumn{1}{c}{5.92} \\
+    \multicolumn{1}{c}{Out 2020} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{90.99} & \multicolumn{1}{c}{1.06} & \multicolumn{1}{c}{2.01} & \multicolumn{1}{c}{5.94} \\
+    \multicolumn{1}{c}{Nov 2020} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{91.07} & \multicolumn{1}{c}{1.05} & \multicolumn{1}{c}{1.89} & \multicolumn{1}{c}{5.99} \\
+    \multicolumn{1}{c}{Dez 2020} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{90.94} & \multicolumn{1}{c}{1.13} & \multicolumn{1}{c}{1.91} & \multicolumn{1}{c}{6.02} \\
+    \multicolumn{1}{c}{Jan 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{90.92} & \multicolumn{1}{c}{1.15} & \multicolumn{1}{c}{2.09} & \multicolumn{1}{c}{5.85} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{91.04} & \multicolumn{1}{c}{1.06} & \multicolumn{1}{c}{2.09} & \multicolumn{1}{c}{5.81} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{91.04} & \multicolumn{1}{c}{1.06} & \multicolumn{1}{c}{2.09} & \multicolumn{1}{c}{5.81} \\
+    \multicolumn{1}{c}{Abr 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{91.16} & \multicolumn{1}{c}{1.03} & \multicolumn{1}{c}{2.04} & \multicolumn{1}{c}{5.76} \\
+    \multicolumn{1}{c}{Mai 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{92.66} & \multicolumn{1}{c}{0.76} & \multicolumn{1}{c}{1.29} & \multicolumn{1}{c}{5.29} \\
+    \multicolumn{1}{c}{Jun 2021} & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{92.58} & \multicolumn{1}{c}{0.76} & \multicolumn{1}{c}{1.33} & \multicolumn{1}{c}{5.33} \\
+    \midrule
+    \multicolumn{7}{p{36em}}{Fonte: Portal Brasileiro dos Dados Abertos} \\
+    \multicolumn{7}{p{36em}}{* Salário Mínimo} \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:renda}%
+\end{table}%
+
+Nas seções \ref{pobreza_metropolitana} e \ref{pobreza_metropolitana2}, veremos que o aumento da pobreza e extrema pobreza não é uma particularidade do Município de Belo Horizonte, mas de toda a metrópole. Sobre os trabalhadores em situação de rua com renda maior que 0.5 salário mínimo, faz pouco sentido esperar que esses valores superem ou se aproximem da renda per capita média de Belo Horizonte que, hoje, é de 3.4 salários mínimos segundo o \href{https://cidades.ibge.gov.br/brasil/mg/belo-horizonte/panorama}{Instituto Brasileiro de Geografia e Estatística}.
+
+\subsection{Escolaridade \& Cor}
+\label{escolaridade_cor}
+
+A escolaridade dominante das pessoas que vivem nas ruas de Belo Horizonte é o Ensino Fundamental incompleto (EF), seguida pelo Ensino Fundamental completo, Ensino Médio (EM) incompleto e Ensino Médio completo. As pessoas que declararam não ter instrução representam na série histórica entre 7.7 e 7.53\% e aqueles com superior incompleto ou mais entre 1.08 e 1.23\%. Esses dados estão organizados na Tabela \ref{tab:escolaridade}. 
+
+\begin{landscape}
+\pagestyle{empty}
+% Table generated by Excel2LaTeX from sheet 'Total'
+\begin{table}[htbp]
+  \centering
+  \caption{População em Situação de Rua, Série Histórica, Escolaridade}
+  	\tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.3}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{lllllllllll}
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{EF Completo} & \multicolumn{1}{c}{EF Incompleto} & \multicolumn{1}{c}{EM Incompleto} & \multicolumn{1}{c}{EM Completo} & \multicolumn{1}{c}{Não Informado} & \multicolumn{1}{c}{Sem Instrução} & \multicolumn{1}{c}{Superior Incomp. ou Mais} \\
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{1285} & \multicolumn{1}{c}{4725} & \multicolumn{1}{c}{1256} & \multicolumn{1}{c}{885} & \multicolumn{1}{c}{52} & \multicolumn{1}{c}{676} & \multicolumn{1}{c}{97} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{1276} & \multicolumn{1}{c}{4702} & \multicolumn{1}{c}{1246} & \multicolumn{1}{c}{878} & \multicolumn{1}{c}{96} & \multicolumn{1}{c}{671} & \multicolumn{1}{c}{97} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{1216} & \multicolumn{1}{c}{4497} & \multicolumn{1}{c}{1200} & \multicolumn{1}{c}{838} & \multicolumn{1}{c}{19} & \multicolumn{1}{c}{634} & \multicolumn{1}{c}{98} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{1223} & \multicolumn{1}{c}{4534} & \multicolumn{1}{c}{1215} & \multicolumn{1}{c}{847} & \multicolumn{1}{c}{19} & \multicolumn{1}{c}{639} & \multicolumn{1}{c}{100} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{1234} & \multicolumn{1}{c}{4548} & \multicolumn{1}{c}{1233} & \multicolumn{1}{c}{849} & \multicolumn{1}{c}{15} & \multicolumn{1}{c}{639} & \multicolumn{1}{c}{101} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1259} & \multicolumn{1}{c}{4598} & \multicolumn{1}{c}{1270} & \multicolumn{1}{c}{865} & \multicolumn{1}{c}{14} & \multicolumn{1}{c}{645} & \multicolumn{1}{c}{106} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1259} & \multicolumn{1}{c}{4598} & \multicolumn{1}{c}{1270} & \multicolumn{1}{c}{865} & \multicolumn{1}{c}{14} & \multicolumn{1}{c}{645} & \multicolumn{1}{c}{106} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{1280} & \multicolumn{1}{c}{4662} & \multicolumn{1}{c}{1290} & \multicolumn{1}{c}{887} & \multicolumn{1}{c}{13} & \multicolumn{1}{c}{665} & \multicolumn{1}{c}{104} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{1198} & \multicolumn{1}{c}{4341} & \multicolumn{1}{c}{1195} & \multicolumn{1}{c}{829} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{608} & \multicolumn{1}{c}{101} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{1219} & \multicolumn{1}{c}{4373} & \multicolumn{1}{c}{1216} & \multicolumn{1}{c}{837} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{617} & \multicolumn{1}{c}{103} \\
+\cmidrule{1-3}\cmidrule{5-11}    \textcolor[rgb]{ 1,  1,  1}{} & \textcolor[rgb]{ 1,  1,  1}{} &      & \textcolor[rgb]{ 1,  1,  1}{} &      &      &      &      &      &      &  \\
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{EF Completo (\%)} & \multicolumn{1}{c}{EF Incompleto  (\%)} & \multicolumn{1}{c}{EM Incompleto  (\%)} & \multicolumn{1}{c}{EM Completo  (\%)} & \multicolumn{1}{c}{Não Informado  (\%)} & \multicolumn{1}{c}{Sem Instrução  (\%)} & \multicolumn{1}{c}{Superior Incomp. ou Mais  (\%)} \\
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.32} & \multicolumn{1}{c}{52.64} & \multicolumn{1}{c}{13.99} & \multicolumn{1}{c}{9.86} & \multicolumn{1}{c}{0.58} & \multicolumn{1}{c}{7.53} & \multicolumn{1}{c}{1.08} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.23} & \multicolumn{1}{c}{52.44} & \multicolumn{1}{c}{13.90} & \multicolumn{1}{c}{9.79} & \multicolumn{1}{c}{1.07} & \multicolumn{1}{c}{7.48} & \multicolumn{1}{c}{1.08} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.30} & \multicolumn{1}{c}{52.89} & \multicolumn{1}{c}{14.11} & \multicolumn{1}{c}{9.86} & \multicolumn{1}{c}{0.22} & \multicolumn{1}{c}{7.46} & \multicolumn{1}{c}{1.15} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.26} & \multicolumn{1}{c}{52.86} & \multicolumn{1}{c}{14.17} & \multicolumn{1}{c}{9.88} & \multicolumn{1}{c}{0.22} & \multicolumn{1}{c}{7.45} & \multicolumn{1}{c}{1.17} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.32} & \multicolumn{1}{c}{52.77} & \multicolumn{1}{c}{14.31} & \multicolumn{1}{c}{9.85} & \multicolumn{1}{c}{0.17} & \multicolumn{1}{c}{7.41} & \multicolumn{1}{c}{1.17} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.38} & \multicolumn{1}{c}{52.51} & \multicolumn{1}{c}{14.50} & \multicolumn{1}{c}{9.88} & \multicolumn{1}{c}{0.16} & \multicolumn{1}{c}{7.37} & \multicolumn{1}{c}{1.21} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.38} & \multicolumn{1}{c}{52.51} & \multicolumn{1}{c}{14.50} & \multicolumn{1}{c}{9.88} & \multicolumn{1}{c}{0.16} & \multicolumn{1}{c}{7.37} & \multicolumn{1}{c}{1.21} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.38} & \multicolumn{1}{c}{52.38} & \multicolumn{1}{c}{14.49} & \multicolumn{1}{c}{9.97} & \multicolumn{1}{c}{0.15} & \multicolumn{1}{c}{7.47} & \multicolumn{1}{c}{1.17} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.47} & \multicolumn{1}{c}{52.41} & \multicolumn{1}{c}{14.43} & \multicolumn{1}{c}{10.01} & \multicolumn{1}{c}{0.12} & \multicolumn{1}{c}{7.34} & \multicolumn{1}{c}{1.22} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{14.56} & \multicolumn{1}{c}{52.22} & \multicolumn{1}{c}{14.52} & \multicolumn{1}{c}{10.00} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{7.37} & \multicolumn{1}{c}{1.23} \\
+    \midrule
+    \multicolumn{11}{l}{Fonte: Portal Brasileiro dos Dados Abertos} \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:escolaridade}%
+\end{table}%
+\end{landscape}
+
+No que concerne à cor da população em situação de rua, a maioria predominante é preta e parda. A Tabela \ref{tab:cor} soma a coluna de pretos e de pardos para evidenciar a proporção em números absolutos desses dois grupos e seu percentual que supera os 83\%. São vidas negras que deveriam importar para a Prefeitura de Belo Horizonte e para toda sociedade do município, mas essa não tem sido a prática em curso no nosso país há séculos, conforme destaca Abdias Nascimento, em seu livro O genocídio do negro brasileiro: processo de um racismo mascarado, publicado pela primeira vez em 1978 \citep{abdias} \footnote{O livro \textbf{O Genocídio do Negro Brasileiro: Processo de um Racismo Mascarado} foi publicado originalmente no Brasil em 1978 pela Editora Paz e Terra, com prefácios de Florestan Fernandes e Wole Soyinka. A nova edição, de 2017, publicada pela Editora Perspectiva, traz posfácio de Elisa Larkin Nascimento intitulado ``O Genocídio no Terceiro Milênio”.}. 
+
+\begin{trivlist}\leftskip=2.5cm
+\item Depois de sete anos de trabalho, o velho, o doente, o aleijado e o mutilado – aqueles que sobreviveram aos horrores da escravidão e não podiam continuar mantendo satisfatória capacidade produtiva – \textbf{eram atirados à rua, à própria sorte, qual lixo humano indesejáve}l: estes eram chamados de “africanos livres”. Não passava, a liberdade sob tais condições, de pura e simples forma de legalizado assassínio coletivo. As classes dirigentes e autoridades públicas praticavam a libertação dos escravos idosos, dos inválidos e dos enfermos incuráveis, sem lhes conceder qualquer recurso, apoio, ou meio de subsistência. \citep[p.~79]{abdias} (grifos nossos)
+\end{trivlist}
+
+O apagamento, a invisibilização e a eliminação das existências das pessoas em situação de rua, vidas majoritariamente negras, não podem/devem ser admitidos e precisam ser imediatamente combatidos em nosso país. Como nos alertou Abdias Nascimento, no já mencionado livro de 1978, reeditado em 2017, “mudam-se os tempos, mas não o tratamento dispensado ao negro pela sociedade brasileira.” \citep[p.~134]{abdias} A violação de direitos identificada com a subnotificação, deturpação, falseamento, inconsistências e controvérsias de dados referentes às pessoas negras no nosso país, como a população em situação de rua, precisa ser urgentemente enfrentada como um passo inicial do combate ao Racismo Estrutural no Brasil.\\
+
+A constituição de um Grupo de Trabalho intitulado ``BH sem morador de rua”\footnote{Sobre a lamentável proposta de criação do Grupo de Trabalho “BH sem morador de Rua”, seguem algumas informações complementares \href{https://www.cmbh.mg.gov.br/comunica%C3%A7%C3%A3o/not%C3%ADcias/2021/08/gt-%E2%80%9Cbh-sem-morador-de-rua%E2%80%9D-quer-avan%C3%A7ar-nos-estudos-e-vai-conhecer
+https://www.cmbh.mg.gov.br/comunica\%C3\%A7\%C3\%A3o/not\%C3\%ADcias/2021/08/pol\%C3\%ADtica-para-popula\%C3\%A7\%C3\%A3o-em-situa\%C3\%A7\%C3\%A3o-de-rua-\%C3\%A9-tema-de-audi\%C3\%AAncia-nesta}{aqui}.}, atualmente em curso na Câmara Municipal de Belo Horizonte, é um nítido retrocesso a toda luta histórica pela garantia de direitos, não somente em Belo Horizonte e no Brasil, mas em vários países do mundo.\\
+
+A pouca escolaridade da maioria das pessoas em situação de rua em Belo Horizonte revela diversas violências estruturais, de exclusão, às quais estão submetidas essa população historicamente vulnerabilizada. É de fundamental importância que políticas públicas estruturantes de educação sejam elaboradas e implantadas com a população em situação de rua, segundo previsto no Decreto nº 7.053/2009, ao instituir Política Nacional para a população em situação de rua.
+
+\begin{landscape}
+\pagestyle{empty}
+% Table generated by Excel2LaTeX from sheet 'Total'
+\begin{table}[htbp]
+  \centering
+  \caption{População em Situação de Rua, Série Histórica, Cor}
+  \tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.0}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{lllllllllll}
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{Amarela} & \multicolumn{1}{c}{Branca} & \multicolumn{1}{c}{Indígena} & \multicolumn{1}{c}{Parda} & \multicolumn{1}{c}{Preta} & \multicolumn{1}{c}{Não Informada} & \multicolumn{1}{c}{Preta \& Parda*} \\
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{39} & \multicolumn{1}{c}{1404} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{5435} & \multicolumn{1}{c}{2077} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7512} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{39} & \multicolumn{1}{c}{1406} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{5426} & \multicolumn{1}{c}{2074} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7500} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{37} & \multicolumn{1}{c}{1322} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{5152} & \multicolumn{1}{c}{1973} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{7125} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{39} & \multicolumn{1}{c}{1335} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{5187} & \multicolumn{1}{c}{1997} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7184} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{40} & \multicolumn{1}{c}{1345} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{5215} & \multicolumn{1}{c}{2000} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7215} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{39} & \multicolumn{1}{c}{1382} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{5286} & \multicolumn{1}{c}{2032} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7318} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{39} & \multicolumn{1}{c}{1382} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{5286} & \multicolumn{1}{c}{2032} & \multicolumn{1}{c}{10} & \multicolumn{1}{c}{7318} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{41} & \multicolumn{1}{c}{1401} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{5361} & \multicolumn{1}{c}{2077} & \multicolumn{1}{c}{12} & \multicolumn{1}{c}{7438} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{37} & \multicolumn{1}{c}{1317} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{4977} & \multicolumn{1}{c}{1931} & \multicolumn{1}{c}{12} & \multicolumn{1}{c}{6908} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{38} & \multicolumn{1}{c}{1335} & \multicolumn{1}{c}{8} & \multicolumn{1}{c}{5028} & \multicolumn{1}{c}{1954} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{6982} \\
+    
+\cmidrule{1-3}\cmidrule{5-11}  \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total (\%)} &      & \multicolumn{1}{c}{Amarela (\%)} & \multicolumn{1}{c}{Branca (\%)} & \multicolumn{1}{c}{Indígena (\%)} & \multicolumn{1}{c}{Parda (\%)} & \multicolumn{1}{c}{Preta (\%)} & \multicolumn{1}{c}{Não Informada (\%)} & \multicolumn{1}{c}{Preta \& Parda (\%)*} \\
+\cmidrule{1-3}\cmidrule{5-11}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.43} & \multicolumn{1}{c}{15.64} & \multicolumn{1}{c}{0.12} & \multicolumn{1}{c}{60.55} & \multicolumn{1}{c}{23.14} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{83.69} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.43} & \multicolumn{1}{c}{15.68} & \multicolumn{1}{c}{0.12} & \multicolumn{1}{c}{60.52} & \multicolumn{1}{c}{23.13} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{83.65} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.44} & \multicolumn{1}{c}{15.55} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{60.60} & \multicolumn{1}{c}{23.21} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{83.80} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.45} & \multicolumn{1}{c}{15.56} & \multicolumn{1}{c}{0.10} & \multicolumn{1}{c}{60.48} & \multicolumn{1}{c}{23.28} & \multicolumn{1}{c}{0.12} & \multicolumn{1}{c}{83.76} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.46} & \multicolumn{1}{c}{15.61} & \multicolumn{1}{c}{0.10} & \multicolumn{1}{c}{60.51} & \multicolumn{1}{c}{23.20} & \multicolumn{1}{c}{0.12} & \multicolumn{1}{c}{83.71} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.45} & \multicolumn{1}{c}{15.78} & \multicolumn{1}{c}{0.09} & \multicolumn{1}{c}{60.36} & \multicolumn{1}{c}{23.20} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{83.57} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.45} & \multicolumn{1}{c}{15.78} & \multicolumn{1}{c}{0.09} & \multicolumn{1}{c}{60.36} & \multicolumn{1}{c}{23.20} & \multicolumn{1}{c}{0.11} & \multicolumn{1}{c}{83.57} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.46} & \multicolumn{1}{c}{15.74} & \multicolumn{1}{c}{0.10} & \multicolumn{1}{c}{60.23} & \multicolumn{1}{c}{23.33} & \multicolumn{1}{c}{0.13} & \multicolumn{1}{c}{83.56} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.45} & \multicolumn{1}{c}{15.90} & \multicolumn{1}{c}{0.10} & \multicolumn{1}{c}{60.09} & \multicolumn{1}{c}{23.32} & \multicolumn{1}{c}{0.14} & \multicolumn{1}{c}{83.41} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{0.45} & \multicolumn{1}{c}{15.94} & \multicolumn{1}{c}{0.10} & \multicolumn{1}{c}{60.04} & \multicolumn{1}{c}{23.33} & \multicolumn{1}{c}{0.13} & \multicolumn{1}{c}{83.38} \\
+    \midrule
+    \multicolumn{11}{l}{Fonte: Portal Brasileiro dos Dados Abertos. A coluna Preta \& Parda não se encontra no banco de dados consultado. Ela resulta da soma da coluna} \\
+    \multicolumn{11}{l}{* A coluna Preta \& Parda não se encontra no banco de dados consultado. Ela resulta da soma da coluna de pretos e de pardos.} \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:cor}%
+\end{table}%
+\end{landscape}
+
+\begin{landscape}
+\pagestyle{empty}
+\begin{figure}[H]
+	\caption{Escolaridade \& Cor}
+	\subfloat[][\centering Grau de Instrução]
+	{\includegraphics[height=13cm, width=10.5cm]{gráficos/pop_rua_escolaridade.pdf}}
+	\qquad
+	\subfloat[][\centering Cor de Pele]
+	{\includegraphics[height=13cm, width=9.5cm]{gráficos/pop_rua_cor.pdf}}
+\end{figure}
+\end{landscape}
+
+\subsection{Bolsa Família \& Relações Familiares}
+
+Na série histórica analisada, é expressiva a quantidade de pessoas em situação de rua que recebem o Benefício do Bolsa Família, isto é, entre 75 e 82.5\%. Por outro lado, também é de destaque o percentual de pessoas que não recebe o benefício. Como têm sido realizadas as entrevistas com as pessoas em situação de rua para avaliação de suas condições de sobrevivência e acesso aos benefícios sociais?\\ 
+
+\textbf{Com base nas informações apresentadas nos Gráficos \ref{fig:sexo_renda} e \ref{fig:sexo_renda2} bem como na Tabela \ref{tab:renda}, o percentual de pessoas em situação de rua com uma renda de 0 a 89 reais ultrapassa os 90\% do total para Belo Horizonte. O cruzamento de dados da subseção \ref{sexo_renda} sobre sexo e renda com os percentuais do não recebimento do Bolsa Família, que oscilam entre 17 e 25\% na série histórica, \underline{aponta para a urgência de um programa de renda mínima na cidade}}.\\ 
+
+Entre setembro de 2020 e junho de 2021, pouco menos de 70\% das pessoas em situação de rua declararam que não se encontraram com um parente próximo ``Nunca” ou ``Quase Nunca”. Os maiores percentuais que seguem essas duas variáveis são ``Mensal”, ``Semanal”, ``Anual” e ``Diário”. Quase 7 em cada 10 afetados não têm contato nenhum com parentes ou raramente o têm. Esses dados são importantes também para a elaboração e implantação de políticas públicas estruturantes de cuidados e atenção às pessoas em situação de rua.\\ 
+
+Seria fundamental que Planos ou Projetos Terapêuticos Singulares (PTS), da Atenção Primária à Saúde, e Planos de Acompanhamento Individual e Familiar (PIA), da Assistência Social, levassem em consideração esses dados de maneira a atuar mais efetivamente junto às pessoas em situação de rua e suas famílias em Belo Horizonte.
+
+\begin{landscape}
+\pagestyle{empty}
+% Table generated by Excel2LaTeX from sheet 'Total'
+\begin{table}[htbp]
+  \centering
+  \caption{População em Situação de Rua, Série Histórica, Recebimento do Bolsa Família e Contato com Parente}
+  \tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.0}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{lllllllllllllll}
+         & \textcolor[rgb]{ 1,  1,  1}{} &      & \textcolor[rgb]{ 1,  1,  1}{} & \multicolumn{2}{c}{Bolsa Família} & \textcolor[rgb]{ 1,  1,  1}{} &      & \textcolor[rgb]{ 1,  1,  1}{} & \multicolumn{6}{c}{Contato com Parente} \\
+\cmidrule{1-3}\cmidrule{5-6}\cmidrule{8-8}\cmidrule{10-15}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{Não} & \multicolumn{1}{c}{Sim} &      & \multicolumn{1}{c}{Total} &      & \multicolumn{1}{c}{Nunca} & \multicolumn{1}{c}{Quase Nunca} & \multicolumn{1}{c}{Diário} & \multicolumn{1}{c}{Semanal} & \multicolumn{1}{c}{Mensal} & \multicolumn{1}{c}{Anual} \\
+\cmidrule{1-3}\cmidrule{5-6}\cmidrule{8-8}\cmidrule{10-15}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{2096} & \multicolumn{1}{c}{6880} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{4134} & \multicolumn{1}{c}{1967} & \multicolumn{1}{c}{335} & \multicolumn{1}{c}{742} & \multicolumn{1}{c}{1302} & \multicolumn{1}{c}{496} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{2222} & \multicolumn{1}{c}{6744} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{4127} & \multicolumn{1}{c}{1974} & \multicolumn{1}{c}{333} & \multicolumn{1}{c}{743} & \multicolumn{1}{c}{1295} & \multicolumn{1}{c}{494} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{1676} & \multicolumn{1}{c}{6826} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{3908} & \multicolumn{1}{c}{1876} & \multicolumn{1}{c}{315} & \multicolumn{1}{c}{714} & \multicolumn{1}{c}{1222} & \multicolumn{1}{c}{467} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{1754} & \multicolumn{1}{c}{6823} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{3945} & \multicolumn{1}{c}{1899} & \multicolumn{1}{c}{316} & \multicolumn{1}{c}{726} & \multicolumn{1}{c}{1228} & \multicolumn{1}{c}{463} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{1706} & \multicolumn{1}{c}{6913} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{3943} & \multicolumn{1}{c}{1921} & \multicolumn{1}{c}{316} & \multicolumn{1}{c}{739} & \multicolumn{1}{c}{1229} & \multicolumn{1}{c}{471} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1540} & \multicolumn{1}{c}{7217} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{3984} & \multicolumn{1}{c}{1954} & \multicolumn{1}{c}{329} & \multicolumn{1}{c}{771} & \multicolumn{1}{c}{1241} & \multicolumn{1}{c}{478} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{1540} & \multicolumn{1}{c}{7217} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{3984} & \multicolumn{1}{c}{1954} & \multicolumn{1}{c}{329} & \multicolumn{1}{c}{771} & \multicolumn{1}{c}{1241} & \multicolumn{1}{c}{478} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{1608} & \multicolumn{1}{c}{7293} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{4011} & \multicolumn{1}{c}{1994} & \multicolumn{1}{c}{341} & \multicolumn{1}{c}{791} & \multicolumn{1}{c}{1283} & \multicolumn{1}{c}{481} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{1536} & \multicolumn{1}{c}{6746} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{3732} & \multicolumn{1}{c}{1854} & \multicolumn{1}{c}{314} & \multicolumn{1}{c}{724} & \multicolumn{1}{c}{1214} & \multicolumn{1}{c}{444} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{1646} & \multicolumn{1}{c}{6728} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{3751} & \multicolumn{1}{c}{1888} & \multicolumn{1}{c}{321} & \multicolumn{1}{c}{742} & \multicolumn{1}{c}{1228} & \multicolumn{1}{c}{444} \\
+\cmidrule{1-3}\cmidrule{5-6}\cmidrule{8-8}\cmidrule{10-15}         &      &      &      &      &      &      &      &      &      &      &      &      &      &  \\
+         &      &      &      &      &      &      &      &      &      &      &      &      &      &  \\
+         & \textcolor[rgb]{ 1,  1,  1}{} &      & \textcolor[rgb]{ 1,  1,  1}{} & \multicolumn{2}{c}{Bolsa Família} & \textcolor[rgb]{ 1,  1,  1}{} &      & \textcolor[rgb]{ 1,  1,  1}{} & \multicolumn{6}{c}{Contato com Parente} \\
+\cmidrule{1-3}\cmidrule{5-6}\cmidrule{8-8}\cmidrule{10-15}    \multicolumn{1}{c}{Mês} &      & \multicolumn{1}{c}{Total (\%)} &      & \multicolumn{1}{c}{Não (\%)} & \multicolumn{1}{c}{Sim (\%)} &      & \multicolumn{1}{c}{Total (\%)} &      & \multicolumn{1}{c}{Nunca (\%)} & \multicolumn{1}{c}{Quase Nunca (\%)} & \multicolumn{1}{c}{Diário (\%)} & \multicolumn{1}{c}{Semanal (\%)} & \multicolumn{1}{c}{Mensal (\%)} & \multicolumn{1}{c}{Anual (\%)} \\
+\cmidrule{1-3}\cmidrule{5-6}\cmidrule{8-8}\cmidrule{10-15}    \multicolumn{1}{c}{Set 2020} &      & \multicolumn{1}{c}{8976} &      & \multicolumn{1}{c}{23.35} & \multicolumn{1}{c}{76.65} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{46.06} & \multicolumn{1}{c}{21.91} & \multicolumn{1}{c}{3.73} & \multicolumn{1}{c}{8.27} & \multicolumn{1}{c}{14.51} & \multicolumn{1}{c}{5.53} \\
+    \multicolumn{1}{c}{Out 2020} &      & \multicolumn{1}{c}{8966} &      & \multicolumn{1}{c}{24.78} & \multicolumn{1}{c}{75.22} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{46.03} & \multicolumn{1}{c}{22.02} & \multicolumn{1}{c}{3.71} & \multicolumn{1}{c}{8.29} & \multicolumn{1}{c}{14.44} & \multicolumn{1}{c}{5.51} \\
+    \multicolumn{1}{c}{Nov 2020} &      & \multicolumn{1}{c}{8502} &      & \multicolumn{1}{c}{19.71} & \multicolumn{1}{c}{80.29} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.97} & \multicolumn{1}{c}{22.07} & \multicolumn{1}{c}{3.71} & \multicolumn{1}{c}{8.40} & \multicolumn{1}{c}{14.37} & \multicolumn{1}{c}{5.49} \\
+    \multicolumn{1}{c}{Dez 2020} &      & \multicolumn{1}{c}{8577} &      & \multicolumn{1}{c}{20.45} & \multicolumn{1}{c}{79.55} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{46.00} & \multicolumn{1}{c}{22.14} & \multicolumn{1}{c}{3.68} & \multicolumn{1}{c}{8.46} & \multicolumn{1}{c}{14.32} & \multicolumn{1}{c}{5.40} \\
+    \multicolumn{1}{c}{Jan 2021} &      & \multicolumn{1}{c}{8619} &      & \multicolumn{1}{c}{19.79} & \multicolumn{1}{c}{80.21} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.75} & \multicolumn{1}{c}{22.29} & \multicolumn{1}{c}{3.67} & \multicolumn{1}{c}{8.57} & \multicolumn{1}{c}{14.26} & \multicolumn{1}{c}{5.46} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Fev 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{17.59} & \multicolumn{1}{c}{82.41} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.50} & \multicolumn{1}{c}{22.31} & \multicolumn{1}{c}{3.76} & \multicolumn{1}{c}{8.80} & \multicolumn{1}{c}{14.17} & \multicolumn{1}{c}{5.46} \\
+    \rowcolor[rgb]{ .851,  .851,  .851} \multicolumn{1}{c}{Mar 2021} &      & \multicolumn{1}{c}{8757} &      & \multicolumn{1}{c}{17.59} & \multicolumn{1}{c}{82.41} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.50} & \multicolumn{1}{c}{22.31} & \multicolumn{1}{c}{3.76} & \multicolumn{1}{c}{8.80} & \multicolumn{1}{c}{14.17} & \multicolumn{1}{c}{5.46} \\
+    \multicolumn{1}{c}{Abr 2021} &      & \multicolumn{1}{c}{8901} &      & \multicolumn{1}{c}{18.07} & \multicolumn{1}{c}{81.93} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.06} & \multicolumn{1}{c}{22.40} & \multicolumn{1}{c}{3.83} & \multicolumn{1}{c}{8.89} & \multicolumn{1}{c}{14.41} & \multicolumn{1}{c}{5.40} \\
+    \multicolumn{1}{c}{Mai 2021} &      & \multicolumn{1}{c}{8282} &      & \multicolumn{1}{c}{18.55} & \multicolumn{1}{c}{81.45} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{45.06} & \multicolumn{1}{c}{22.39} & \multicolumn{1}{c}{3.79} & \multicolumn{1}{c}{8.74} & \multicolumn{1}{c}{14.66} & \multicolumn{1}{c}{5.36} \\
+    \multicolumn{1}{c}{Jun 2021} &      & \multicolumn{1}{c}{8374} &      & \multicolumn{1}{c}{19.66} & \multicolumn{1}{c}{80.34} &      & \multicolumn{1}{c}{100.00} &      & \multicolumn{1}{c}{44.79} & \multicolumn{1}{c}{22.55} & \multicolumn{1}{c}{3.83} & \multicolumn{1}{c}{8.86} & \multicolumn{1}{c}{14.66} & \multicolumn{1}{c}{5.30} \\
+    \midrule
+    \multicolumn{15}{l}{Fonte: Portal Brasileiro dos Dados Abertos} \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:bf_contato}%
+\end{table}%
+
+\end{landscape}
+
+\begin{landscape}
+\pagestyle{empty}
+\begin{figure}[H]
+	\caption{Recebimento Bolsa Família \& Contato com Familiares}
+	\subfloat[][\centering Recebimento Bolsa Família]
+	{\includegraphics[height=13cm, width=10cm]{gráficos/pop_rua_bolsa_familia.pdf}}
+	\qquad
+	\subfloat[][\centering Contato com Parente Fora das Ruas]
+	{\includegraphics[height=13cm, width=9.5cm]{gráficos/pop_rua_contato.pdf}}
+\end{figure}
+\end{landscape}
+
+\subsection{Dados Tabulados do CadÚnico}
+
+Os dados tabulados nas seguintes subseções trazem mais informações sobre o perfil da população em situação de rua. Esse levantamento se refere somente ao mês de agosto de 2021, embora sugere-se a expansão dessas estatísticas para séries históricas maiores. 
+
+Os dados tabulados nas seguintes subseções trazem também informações sobre o perfil da população em situação de rua em Belo Horizonte. O levantamento possibilitado pelo mecanismo de busca do CECAD\footnote{Link de acesso ao mecanismo de busca CECAD do CadÚnico - \href{https://cecad.cidadania.gov.br/tab_cad.php}{CECAD 2.0 (cidadania.gov.br)}} se refere somente aos meses de julho e agosto de 2021 e são complementares aos dados da análise histórica de setembro de 2020 a junho de 2021. Mais uma vez, manifestamos o nosso estranhamento e perplexidade quanto à disponibilização de dados referentes à população em situação de rua somente nesse curto espaço temporal.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Mecanismo de Busca do CadÚnico Disponibilizado pelo Ministério da Cidadania do Governo Federal, com Dados já Tabulados.}
+	\includegraphics[scale=1]{gráficos/cadunico.png}
+	\label{fig:cadunico_web}
+\end{figure}
+
+Lamentável e arbitrariamente, a Prefeitura de Belo Horizonte tem afirmado, de maneira reiterada, considerar somente os números de pessoas em situação de rua dos últimos 12 meses de atualização do CadÚnico, agindo de forma contrária ao disposto no Artigo 7º do Decreto nº 6.135, de 26 de junho de 2007, que regulamentou o Cadastro Único para Programas Sociais do Governo Federal.
+
+\begin{trivlist}\leftskip=2.5cm
+\item Art. 7o  \textbf{As informações constantes do CadÚnico terão validade de dois anos, contados a partir da data da última atualização}, sendo necessária, após este período, a sua atualização ou revalidação, na forma disciplinada pelo Ministério do Desenvolvimento Social e Combate à Fome. (grifos nossos)
+\end{trivlist}
+
+
+\subsubsection{Meses após Atualização Cadastral \& Situação Domicílio}
+\label{atualizacao_cadastral}
+
+Como já mencionado anteriormente, o Decreto que regulamenta o CadÚnico prevê que sejam considerados atualizados os cadastros com até 2 anos de atualização. Dessa forma, a partir da Tabela 6, compreende-se que 56\% dos 8.565 cadastros de agosto/2021 e 57\% dos 8.472 cadastros de julho/2021 encontram-se atualizados. Contudo, fica a pergunta sobre onde e como estão as demais pessoas em situação de rua com cadastrados desatualizados em Belo Horizonte em plena pandemia da COVID-19? Deixaram de existir por conta da desatualização do cadastro? A Prefeitura de Belo Horizonte continuará insistindo em enxergar somente as pessoas em situação de rua com cadastros atualizados nos últimos 12 meses? Com que base legal considerarão somente 2.527 pessoas em situação de rua em Belo Horizonte com essa visão deturpada da realidade? No que tange à Situação do Domicílio, a maior parte da população em situação de rua deixa o campo sem resposta no formulário, talvez por ser esta uma questão aparentemente óbvia, estando apenas uma pessoa em em zona rural. É imprescindível a elaboração e implantação de políticas públicas estruturantes de moradia para a garantia de direitos da população em situação de rua em Belo Horizonte, assim como é fundamental que as pessoas se sintam pertencentes a um determinado domicílio.
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 4'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados, Meses após Atualização Cadastral, População em Situação de Rua}
+    \begin{tabular}{p{17.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Meses após a Última Atualização Cadastral por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{até 12 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{2.266}} & \multicolumn{1}{c}{2.527} \\
+    \multicolumn{1}{l}{13 a 18 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{929}} & \multicolumn{1}{c}{717} \\
+    \multicolumn{1}{l}{19 a 24 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{1.624}} & \multicolumn{1}{c}{1.563} \\
+    \multicolumn{1}{l}{25 a 36 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{2.198}} & \multicolumn{1}{c}{2.220} \\
+    \multicolumn{1}{l}{37 a 48 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{1.028}} & \multicolumn{1}{c}{1.063} \\
+    \multicolumn{1}{l}{acima de 48 Meses} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{427}} & \multicolumn{1}{c}{475} \\
+    \multicolumn{1}{l}{Sem Resposta} & \multicolumn{1}{c}{\textcolor[rgb]{ .2,  .2,  .2}{0}} & \multicolumn{1}{c}{0} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Situação do Domicílio} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Urbanas} & \multicolumn{1}{c}{325} & \multicolumn{1}{c}{363} \\
+    \multicolumn{1}{l}{Rurais} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{1} \\
+    \multicolumn{1}{l}{Sem Resposta} & \multicolumn{1}{c}{8.146} & \multicolumn{1}{c}{8.201} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico, Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab1}%
+\end{table}%
+
+\subsubsection{Faixa Etária \& Cor ou Raça}
+
+A Tabela \ref{tab:tab2} indica que em Belo Horizonte a maior parcela dessa população em situação de rua cadastrada no CadÚnico é negra (aproximadamente, 84\% em agosto/2021). Os dados apontam ainda que a população em situação de rua em Belo Horizonte é majoritariamente composta por pessoas na faixa etária de 18 a 59 anos, sendo pouco menos de 10\% com 60 anos de idade ou mais e 38 crianças e adolescentes em situação de rua. É importantíssimo que buscas ativas sejam realizadas e planos de cuidado e atenção construídos para a garantia dos direitos dessas pessoas.\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 2'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados, Faixa Etária \& Cor ou Raça, População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Faixa Etária por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{l}{} &      &  \\
+    \multicolumn{1}{l}{0 a 17 anos} & \multicolumn{1}{c}{38} & \multicolumn{1}{c}{38} \\
+    \multicolumn{1}{l}{18 a 59 anos} & \multicolumn{1}{c}{7.750} & \multicolumn{1}{c}{7.826} \\
+    \multicolumn{1}{l}{acima de 60 anos} & \multicolumn{1}{c}{684} & \multicolumn{1}{c}{701} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Cor ou Raça por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Parda} & \multicolumn{1}{c}{5.079} & \multicolumn{1}{c}{5.134} \\
+    \multicolumn{1}{l}{Preta} & \multicolumn{1}{c}{1.987} & \multicolumn{1}{c}{2.018} \\
+    \multicolumn{1}{l}{Branca} & \multicolumn{1}{c}{1.349} & \multicolumn{1}{c}{1.354} \\
+    \multicolumn{1}{l}{Amarela} & \multicolumn{1}{c}{37} & \multicolumn{1}{c}{38} \\
+    \multicolumn{1}{l}{Indígena} & \multicolumn{1}{c}{9} & \multicolumn{1}{c}{10} \\
+    \multicolumn{1}{l}{Sem resposta} & \multicolumn{1}{c}{11} & \multicolumn{1}{c}{11} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico, Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab2}%
+\end{table}%
+
+\subsubsection{Sexo \& Renda Familiar per Capita}
+
+Os dados indicados na Tabela \ref{tab:tab3} apontam que as pessoas que estão em situação de rua em Belo Horizonte são predominantemente do sexo masculino, com aproximadamente 90\% dos registros no CadÚnico. Todavia, cabe ressaltar que não há no formulário um campo específico para a identidade de gênero das pessoas em situação de rua, invisibilizando as vidas de algumas pessoas, \href{http://pepsic.bvsalud.org/pdf/gerais/v8nspe/05.pdf}{conforme estudo realizado pelo Programa Polos de Cidadania da UFMG}. No que diz respeito à renda, a maioria da população em situação de rua em Belo Horizonte se encontra em condições de extrema pobreza e pobreza, representando mais de 93\% das pessoas cadastradas no CadÚnico. Ressalta-se que tal porcentagem provavelmente está subnotificada, visto que a linha da pobreza não acompanhou as recentes mudanças no custo de vida, que foram substancialmente afetadas nos últimos anos.\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 3'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados. Sexo \& Renda Familiar por Pessoa. População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Sexo por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{l}{Masculino} & \multicolumn{1}{c}{7.586} & \multicolumn{1}{c}{7.672} \\
+    \multicolumn{1}{l}{Feminino} & \multicolumn{1}{c}{886} & \multicolumn{1}{c}{893} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Faixa de Renda Familiar Per Capita por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{l}{Extrema Pobreza} & \multicolumn{1}{c}{7.833} & \multicolumn{1}{c}{7.924} \\
+    \multicolumn{1}{l}{Pobreza} & \multicolumn{1}{c}{67} & \multicolumn{1}{c}{70} \\
+    \multicolumn{1}{l}{Baixa Renda} & \multicolumn{1}{c}{117} & \multicolumn{1}{c}{117} \\
+    \multicolumn{1}{l}{Acima de 1/2 S.M.} & \multicolumn{1}{c}{455} & \multicolumn{1}{c}{454} \\
+    \multicolumn{1}{l}{Sem Resposta} & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico. Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab3}%
+\end{table}%
+
+\subsubsection{Abastecimento de Água \& Acesso a Banheiros}
+
+Na Tabela \ref{tab:tab4}, um item essencial para a sobrevivência de qualquer pessoa e que está bastante presente no momento pandêmico que vivemos, apresenta dados sobre abastecimento de àgua e acesso a banheiros pela população em situação de rua em Belo Horizonte. Não nos surpreende, mas nos indigna saber que 97\% das pessoas em situação de rua no município não responderam tanto à questão sobre Abastecimento de Água quanto ao acesso a banheiros. Sabemos que essas são bandeiras antigas de luta e protesto das pessoas em situação de rua na cidade, do Movimento Nacional da População em Situação de Rua e de seus parceiros, como a Pastoral Nacional do Povo da Rua e o Programa Polos de Cidadania da UFMG. Até quando essa inacreditável situação de violações de direitos perdurará em Belo Horizonte não sabemos.\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 1'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados, Abastecimento de Água \& Acesso a Banheiros, População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Forma de Abastecimento de Água por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{l}{Rede geral de distribuição} & \multicolumn{1}{c}{220} & \multicolumn{1}{c}{242} \\
+    \multicolumn{1}{l}{Poço ou nascente} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{3} \\
+    \multicolumn{1}{l}{Cisterna} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{2} \\
+    \multicolumn{1}{l}{Outra forma} & \multicolumn{1}{c}{4} & \multicolumn{1}{c}{6} \\
+    \multicolumn{1}{l}{Sem resposta} & \multicolumn{1}{c}{8.243} & \multicolumn{1}{c}{8.312} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Acesso a Banheiros  por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{l}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{226} & \multicolumn{1}{c}{250} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{3} \\
+    \multicolumn{1}{l}{Sem Resposta} & \multicolumn{1}{c}{8.243} & \multicolumn{1}{c}{8.312} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico, Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab4}%
+\end{table}%
+
+\subsubsection{Família Indígena \& Quilombola}
+
+De acordo com a Tabela \ref{tab:tab5}, há 3 famílias indígenas e quilombolas em situação de rua em Belo Horizonte cadastradas no CadÚnico segundo os últimos dados de julho e agosto de 2021. Recuperando a Tabela \ref{tab:tab2} recentemente mencionada, 10 pessoas indígenas estão registradas na base de dados do CadÚnico no mês de agosto de 2021. Em que condições se encontram essas pessoas e famílias? Quais cuidados e atenção a Prefeitura de Belo Horizonte tem destinado a elas?\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 5'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados, Família Indígena \& Quilombola, População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Família Indígena por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{1} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{8.471} & \multicolumn{1}{c}{8.564} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Família Quilombola por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{2} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{8.470} & \multicolumn{1}{c}{8.563} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico, Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab5}%
+\end{table}%
+
+\subsubsection{Bolsa Família}
+
+Segundo os dados apresentados na Tabela \ref{tab:tab6}, em especial os relativos ao mês de julho de 2021, 77\% das pessoas em situação de rua em Belo Horizonte receberam o benefício do programa Bolsa Família (PBF). Como indicado na já referida e comentada Tabela \ref{tab:tab3} deste documento, perguntamos por que este contingente de pessoas que recebeu o PBF não é maior? Sendo que mais de 93\% da população em situação de rua no município se encontram em condições de extrema pobreza e pobreza?\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 6'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados, Bolsa Família, População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Recebe Bolsa Família por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{6.559} & \multicolumn{1}{c}{0} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{1.913} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico, Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab6}%
+\end{table}%
+
+\subsubsection{Deficiência \& Saber Ler e Escrever}
+
+Na Tabela \ref{tab:tab7}, em agosto de 2021, chamou-nos a atenção os números de 1.263 pessoas em situação de rua com algum tipo de deficiência em Belo Horizonte e 596 que não sabem ler e escrever. Em que condições se encontram essas pessoas? Quais cuidados e atenção a Prefeitura de Belo Horizonte tem destinado a elas? Há algum programa específico pensado para e com elas?\\
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 7'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados. Deficiência \& Saber Ler e Escrever. População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Pessoa com Deficiência por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{1.242} & \multicolumn{1}{c}{1.263} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{7.230} & \multicolumn{1}{c}{7.302} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    \multicolumn{1}{r}{} &      &  \\
+    \multicolumn{1}{r}{} &      &  \\
+    \midrule
+    \multicolumn{1}{c}{Pessoa Sabe Ler e Escrever por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    \multicolumn{1}{l}{Sim} & \multicolumn{1}{c}{7.891} & \multicolumn{1}{c}{7.969} \\
+    \multicolumn{1}{l}{Não} & \multicolumn{1}{c}{581} & \multicolumn{1}{c}{596} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico. Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab7}%
+\end{table}%
+
+\subsubsection{Grupos Populacionais Tradicionais \& Específicos por Pessoa}
+
+Conforme a Tabela \ref{tab:tab8}, a coleta de dados sobre grupos populacionais tradicionais e específicos por pessoa nos ajuda a dimensionar por analogia a falta de dados sobre a população de rua. De acordo com o \href{https://cidades.ibge.gov.br/brasil/mg/belo-horizonte/panorama}{Instituto Brasileiro de Geografia e Estatística}, a população estimada para o Município de Belo Horizonte é de 2.530.701. Desse total, pessoas pertencentes a famílias de catadores de material reciclável estiveram entre 659 e 664; e pessoas de origem familiar cigana com apenas 4 registros.\\ 
+
+Esses dados podem estar subestimados e precisam ser urgentemente atualizados no grave momento de pandemia da COVID-19 e crise humanitária que vivenciado em todo o país. É importantíssimo que políticas públicas estruturantes também sejam elaboradas e implantadas, de modo intersetorial, para garantir os direitos desses grupos populacionais específicos e historicamente vulnerabilizados no Brasil.\\ 
+
+
+% Table generated by Excel2LaTeX from sheet 'Tabela 8'
+\begin{table}[htbp]
+  \centering
+  \caption{Dados Tabulados. Grupos Populacionais Tradicionais \& Específicos por Pessoa. População em Situação de Rua}
+    \begin{tabular}{p{23.5em}rr}
+    \hline
+    \multicolumn{1}{c}{Grupos Populacionais Tradicionais e Específicos por Pessoa} & \multicolumn{1}{c}{Julho} & \multicolumn{1}{c}{Agosto} \\
+    \midrule
+    \multicolumn{1}{c}{} &      &  \\
+    Famlia Cigana & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4} \\
+    Familia Extrativista & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia de Pescadores Artesanais & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{1} \\
+    Familia Pertencente a Comunidade de Terreiro & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia Ribeirinha & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia Agricultores Familiares & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{1} \\
+    Familia Assentada da Reforma Agraria & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia Beneficiaria do Programa Nacional do Credito Fundiario & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia Acampada & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{2} \\
+    Familia Atingida por Empreendimentos de Infraestrutura & \multicolumn{1}{c}{0} & \multicolumn{1}{c}{0} \\
+    Familia de Preso do Sistema Carcerario & \multicolumn{1}{c}{7} & \multicolumn{1}{c}{7} \\
+    Familia Catadores de Material Reciclavel & \multicolumn{1}{c}{659} & \multicolumn{1}{c}{664} \\
+    Nenhuma & \multicolumn{1}{c}{7.799} & \multicolumn{1}{c}{7.886} \\
+    \midrule
+    \multicolumn{1}{r}{Total} & \multicolumn{1}{c}{8.472} & \multicolumn{1}{c}{8.565} \\
+    \midrule
+    Fonte: CadÚnico. Julho/Agosto 2021 &      &  \\
+    \end{tabular}%
+  \label{tab:tab8}%
+\end{table}%
+
+
+\subsubsection{Dados da Pobreza na Região Metropolitana de Belo Horizonte}
+\label{pobreza_metropolitana}
+
+A Tabela \ref{tab:tab9} lista os 34 municípios que fazem parte da região metropolitana de Belo Horizonte. A definição desse território é a mesma utilizada pela \href{http://www.rmbh.org.br/rmbh.php}{Região Metropolitana de Belo Horizonte} com base na Lei Complementar nº 14 de 1973 e, posteriormente, na Constituição Estadual do de Minas Gerais. Os dados correspondem aos meses de julho e agosto de 2021 com números absolutos para esse período além das variações numéricas e percentuais.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Variação da Pobreza nos Municípios Metropolitanos de Belo Horizonte}
+    \tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.0}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{lcccc}
+    \hline
+    Cidades & Julho & Agosto & Variação & Variação (\%) \\
+    \hline
+    Baldim & \textcolor[rgb]{ .2,  .2,  .2}{3.823} & \textcolor[rgb]{ .2,  .2,  .2}{3.841} & \textcolor[rgb]{ .2,  .2,  .2}{18} & 0.5 \\
+    \rowcolor[rgb]{ .851,  .851,  .851} Belo Horizonte & \textcolor[rgb]{ .2,  .2,  .2}{471.025} & \textcolor[rgb]{ .2,  .2,  .2}{477.215} & \textcolor[rgb]{ .2,  .2,  .2}{6.190} & 1.3 \\
+    Betim & \textcolor[rgb]{ .2,  .2,  .2}{153.152} & \textcolor[rgb]{ .2,  .2,  .2}{154.208} & \textcolor[rgb]{ .2,  .2,  .2}{1.056} & 0.7 \\
+    Brumadinho & \textcolor[rgb]{ .2,  .2,  .2}{10.959} & \textcolor[rgb]{ .2,  .2,  .2}{10.989} & \textcolor[rgb]{ .2,  .2,  .2}{30} & 0.3 \\
+    Caeté & \textcolor[rgb]{ .2,  .2,  .2}{10.780} & \textcolor[rgb]{ .2,  .2,  .2}{10.822} & \textcolor[rgb]{ .2,  .2,  .2}{42} & 0.4 \\
+    Capim Branco & \textcolor[rgb]{ .2,  .2,  .2}{3.383} & \textcolor[rgb]{ .2,  .2,  .2}{3.405} & \textcolor[rgb]{ .2,  .2,  .2}{22} & 0.7 \\
+    Confins & \textcolor[rgb]{ .2,  .2,  .2}{2.407} & \textcolor[rgb]{ .2,  .2,  .2}{2.428} & \textcolor[rgb]{ .2,  .2,  .2}{21} & 0.9 \\
+    Contagem & \textcolor[rgb]{ .2,  .2,  .2}{157.993} & \textcolor[rgb]{ .2,  .2,  .2}{159.999} & \textcolor[rgb]{ .2,  .2,  .2}{2.006} & 1.3 \\
+    Esmeraldas & \textcolor[rgb]{ .2,  .2,  .2}{33.345} & \textcolor[rgb]{ .2,  .2,  .2}{33.497} & \textcolor[rgb]{ .2,  .2,  .2}{152} & 0.5 \\
+    Florestal & \textcolor[rgb]{ .2,  .2,  .2}{2.866} & \textcolor[rgb]{ .2,  .2,  .2}{2.874} & \textcolor[rgb]{ .2,  .2,  .2}{8} & 0.3 \\
+    Ibirité & \textcolor[rgb]{ .2,  .2,  .2}{67.672} & \textcolor[rgb]{ .2,  .2,  .2}{68.346} & \textcolor[rgb]{ .2,  .2,  .2}{674} & 1.0 \\
+    Igarapé & \textcolor[rgb]{ .2,  .2,  .2}{14.314} & \textcolor[rgb]{ .2,  .2,  .2}{14.402} & \textcolor[rgb]{ .2,  .2,  .2}{88} & 0.6 \\
+    Itaguara & \textcolor[rgb]{ .2,  .2,  .2}{1.792} & \textcolor[rgb]{ .2,  .2,  .2}{4.641} & \textcolor[rgb]{ .2,  .2,  .2}{2.849} & 159.0 \\
+    Itatiaiuçu & \textcolor[rgb]{ .2,  .2,  .2}{4.236} & \textcolor[rgb]{ .2,  .2,  .2}{4.261} & \textcolor[rgb]{ .2,  .2,  .2}{25} & 0.6 \\
+    Jaboticatubas & \textcolor[rgb]{ .2,  .2,  .2}{6.035} & \textcolor[rgb]{ .2,  .2,  .2}{6.100} & \textcolor[rgb]{ .2,  .2,  .2}{65} & 1.1 \\
+    Juatuba & \textcolor[rgb]{ .2,  .2,  .2}{13.442} & \textcolor[rgb]{ .2,  .2,  .2}{13.532} & \textcolor[rgb]{ .2,  .2,  .2}{90} & 0.7 \\
+    Lagoa Santa & \textcolor[rgb]{ .2,  .2,  .2}{15.559} & \textcolor[rgb]{ .2,  .2,  .2}{15.687} & \textcolor[rgb]{ .2,  .2,  .2}{128} & 0.8 \\
+    Mário Campos & \textcolor[rgb]{ .2,  .2,  .2}{2.039} & \textcolor[rgb]{ .2,  .2,  .2}{5.495} & \textcolor[rgb]{ .2,  .2,  .2}{3.456} & 169.5 \\
+    Mateus Leme & \textcolor[rgb]{ .2,  .2,  .2}{13.091} & \textcolor[rgb]{ .2,  .2,  .2}{13.186} & \textcolor[rgb]{ .2,  .2,  .2}{95} & 0.7 \\
+    Matozinhos & \textcolor[rgb]{ .2,  .2,  .2}{13.976} & \textcolor[rgb]{ .2,  .2,  .2}{14.085} & \textcolor[rgb]{ .2,  .2,  .2}{109} & 0.8 \\
+    Nova Lima & \textcolor[rgb]{ .2,  .2,  .2}{20.794} & \textcolor[rgb]{ .2,  .2,  .2}{21.112} & \textcolor[rgb]{ .2,  .2,  .2}{318} & 1.5 \\
+    Nova União & \textcolor[rgb]{ .2,  .2,  .2}{2.735} & \textcolor[rgb]{ .2,  .2,  .2}{2.768} & \textcolor[rgb]{ .2,  .2,  .2}{33} & 1.2 \\
+    Pedro Leopoldo & \textcolor[rgb]{ .2,  .2,  .2}{15.947} & \textcolor[rgb]{ .2,  .2,  .2}{16.153} & \textcolor[rgb]{ .2,  .2,  .2}{206} & 1.3 \\
+    Raposos & \textcolor[rgb]{ .2,  .2,  .2}{3.277} & \textcolor[rgb]{ .2,  .2,  .2}{3.286} & \textcolor[rgb]{ .2,  .2,  .2}{9} & 0.3 \\
+    Ribeirão das Neves & \textcolor[rgb]{ .2,  .2,  .2}{108.510} & \textcolor[rgb]{ .2,  .2,  .2}{109.515} & \textcolor[rgb]{ .2,  .2,  .2}{1.005} & 0.9 \\
+    Rio Acima & \textcolor[rgb]{ .2,  .2,  .2}{3.273} & \textcolor[rgb]{ .2,  .2,  .2}{3.301} & \textcolor[rgb]{ .2,  .2,  .2}{28} & 0.9 \\
+    Rio Manso & \textcolor[rgb]{ .2,  .2,  .2}{1.708} & \textcolor[rgb]{ .2,  .2,  .2}{1.708} & \textcolor[rgb]{ .2,  .2,  .2}{0} & 0.0 \\
+    Sabará & \textcolor[rgb]{ .2,  .2,  .2}{38.082} & \textcolor[rgb]{ .2,  .2,  .2}{14.543} & \textcolor[rgb]{ .2,  .2,  .2}{-23.539} & -61.8 \\
+    Santa Luzia & \textcolor[rgb]{ .2,  .2,  .2}{83.970} & \textcolor[rgb]{ .2,  .2,  .2}{84.542} & \textcolor[rgb]{ .2,  .2,  .2}{572} & 0.7 \\
+    São Joaquim de Bicas & \textcolor[rgb]{ .2,  .2,  .2}{13.954} & \textcolor[rgb]{ .2,  .2,  .2}{5.516} & \textcolor[rgb]{ .2,  .2,  .2}{-8,438} & -60.5 \\
+    São José da Lapa & \textcolor[rgb]{ .2,  .2,  .2}{9.457} & \textcolor[rgb]{ .2,  .2,  .2}{9.515} & \textcolor[rgb]{ .2,  .2,  .2}{58} & 0.6 \\
+    Sarzedo & \textcolor[rgb]{ .2,  .2,  .2}{13.067} & \textcolor[rgb]{ .2,  .2,  .2}{13.147} & \textcolor[rgb]{ .2,  .2,  .2}{80} & 0.6 \\
+    Taquaraçu de Minas & \textcolor[rgb]{ .2,  .2,  .2}{2.122} & \textcolor[rgb]{ .2,  .2,  .2}{2.152} & \textcolor[rgb]{ .2,  .2,  .2}{30} & 1.4 \\
+    Vespasiano & \textcolor[rgb]{ .2,  .2,  .2}{43.793} & \textcolor[rgb]{ .2,  .2,  .2}{44.633} & \textcolor[rgb]{ .2,  .2,  .2}{840} & 1.9 \\
+    \hline
+    Total Região Metropolitana & 1.318.785 & 1.306.271 & \textcolor[rgb]{ .2,  .2,  .2}{-12.514} & -0.01 \\
+     \hline
+    {\small Fonte: CadÚnico, Julho/Agosto 2021} &  & & \textcolor[rgb]{ .2,  .2,  .2}{} &  \\
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:tab9}%
+\end{table}%
+
+A Tabela \ref{tab:tab9} aponta variações percentuais positivas na maior parte das 34 cidades da região metropolitana belo-horizontina que são visualmente perceptíveis no Gráfico \ref{fig:mapa_pop_rua_pobreza}. Na seção \ref{politica_morte}, discutiremos os efeitos dessa demografia de seres empobrecidos à da política de morte que a acompanha.\\
+
+\subsubsection{Georreferenciamento da Pobreza na Região Metropolitana de Belo Horizonte}
+\label{pobreza_metropolitana2}
+
+Não é novidade que as grandes cidades são as maiores concentradores de renda e produtoras de pobreza. Ocorre que os indícios do crescimento da desigualdade produz geografias invisíveis. Assim, tanto maior a intensidade de conurbação de limites territoriais urbanos, isto é, o desaparecimento dos vazios entre as linhas limítrofes de um município a outro, tanto mais a necessidade de acompanhar os processos que desencadeiam pessoas em situação de pobreza.\\ 
+
+\textbf{No Gráfico \ref{fig:mapa_pop_rua_pobreza}, observa-se que a situação de pobreza atinge a quase meio milhão de pessoas em Belo Horizonte no mês de julho de 2021}. Esses dados são mensurados também nas pequenas cidades, com números que vão de 1.708 a 10.989 indivíduos em situação de pobreza em número absolutos, respectivamente, em Rio Manso e Brumadinho.\\ 
+
+Quanto ao que definimos como urbanizações intermediárias, municípios como Ribeirão das Neves, Betim e Contagem, entre 100 e 160 mil indivíduos experienciam a condição de pobreza ou extrema pobreza. O Gráfico \ref{fig:pop_rua_pobreza_total_jul_agos} mostra a distribuição dos valores absolutos das pessoas em situação de pobreza nos 34 municípios da metrópole belo-horizontina.\\
+
+Por ora, cabe ressaltar que os dados sobre a pobreza e extrema pobreza, conforme as rendas descritas na Tabela \ref{tab:tab3} para a população em situação de rua, estejam provavelmente defasados, uma vez que os ganhos per capita de indivíduos sem  renda ou de baixíssima remuneração coincidem com os números sobre o perfil de pessoas em situação de rua. O Gráfico \ref{fig:mapa_pop_rua_pobreza2} indica as variações de agosto em números absolutos como na Tabela \ref{tab:tab9}. Já os Gráficos \ref{fig:mapa_pop_rua_renda} e \ref{fig:mapa_pop_rua_renda2} facilitam a visualização dos percentuais julho e agosto nas tabulações do CadÚnico.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Total de Indivíduos em Situação de Pobreza na Região Metropolitana de Belo Horizonte, Julho 2021}
+	\includegraphics[height=21cm, width=14cm]{gráficos/pop_rua_rmbh_pobreza.pdf}
+	\label{fig:mapa_pop_rua_pobreza}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\caption{Total de Indivíduos em Situação de Pobreza na Região Metropolitana de Belo Horizonte, Agosto 2021}
+	\includegraphics[height=21cm, width=14cm]{gráficos/pop_rua_rmbh_pobreza2.pdf}
+	\label{fig:mapa_pop_rua_pobreza2}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+	\caption{Distribuição (\%) da Pobreza na Região Metropolitana de Belo Horizonte, Julho 2021}
+	\includegraphics[height=21cm, width=14cm]{gráficos/pop_rua_rmbh_renda.pdf}
+	\label{fig:mapa_pop_rua_renda}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+	\caption{Distribuição (\%) da Pobreza na Região Metropolitana de Belo Horizonte, Agosto 2021}
+	\includegraphics[height=21cm, width=14cm]{gráficos/pop_rua_rmbh_renda2.pdf}
+	\label{fig:mapa_pop_rua_renda2}
+\end{figure}
+
+\begin{landscape}
+\pagestyle{empty}
+\begin{figure}[H]
+\centering
+	\caption{Pobreza na Região Metropolitana de Belo Horizonte, Julho e Agosto 2021}
+	\includegraphics[height=14cm, width=22cm]{gráficos/pop_rua_pobreza_total_jul_agos.pdf}
+	\label{fig:pop_rua_pobreza_total_jul_agos}
+\end{figure}
+\end{landscape}
+
+\newpage
+
+\section{Análise de Dados}
+\vspace{1cm}
+
+Os dados disponibilizados pela Prefeitura de Belo Horizonte sobre a população em situação de rua na cidade são os mesmos que alimentam a base do Portal Brasileiro de Dados Abertos no âmbito federal. Além dessas duas bases, o Cadastro Único (CadÚnico) também publica dados tabulados sobre as pessoas que vivem nas ruas dos municípios brasileiros e outras estatísticas como a participação de pessoas no Programa Bolsa Família, a existência de banheiros e o modo de acesso à água entre outros. Também indivíduos e famílias podem ser incluídos nas bases de dados por cor, raça, faixa etária e sexo.\\ 
+
+
+Atualmente, com base na série histórica sobre população de rua publicada pelo Município de Belo Horizonte e também presentes no Portal Brasileiro de Dados Abertos, havia, aproximadamente, em junho de 2021, 8.374 pessoas em situação de rua no município, com cadastros atualizados e não atualizados\footnote{ Diferentemente do discurso propagado pela Prefeitura de Belo Horizonte, o fato das pessoas não terem seus cadastros atualizados nos últimos 24 meses não implica nos seus súbitos desaparecimentos das ruas da cidade. Entendemos que é um dever ético e administrativo da Prefeitura de Belo Horizonte procurar pelas pessoas que não atualizaram os seus cadastros e oferecer a devida atenção e cuidados necessários para a garantia de seus direitos fundamentais.}. Em setembro de 2020, a população chegou a 8.976, quando se previa o aumento de novos casos e uma segunda onda da pandemia causada pelo vírus SARS-CoV-2\footnote{Ver \href{https://dados.pbh.gov.br/dataset/populacao-de-rua}{Prefeitura de Belo Horizonte Dados Abertos} e \href{https://dados.gov.br/dataset/populacao-de-rua}{Portal Brasileiro de Dados Abertos}.}.\\
+
+Conforme os registros do Portal Brasileiro de Dados Abertos, a população desabrigada na capital belo-horizontina decresce desde abril de 2021, quando foi observado um pico de 8.901 pessoas sem um teto para morar. O levantamento feito pela equipe do Polos de Cidadania, Faculdade de Direito, UFMG, destaca algumas hipóteses relevantes para uma avaliação mais cuidadosa da série histórica setembro de 2020 a junho de 2021.\\
+
+Nessa seção, o objetivo é analisar estatisticamente os dados apresentados pela prefeitura da capital mineira por meio de seus órgãos e centros responsáveis, quanto à população em situação de rua. Além disso, aferir se a série histórica em questão é minimamente confiável ao ser utilizada pelos poderes públicos na apreciação do tema. No Organograma 1, mostramos a estrutura dos dados consultados diferenciando dados de séries históricas de dados tabulados.\\
+
+
+\subsection{Testes Estatísticos}
+
+A lista a seguir se subdivide em Teste Alpha na seção \ref{teste_alpha}, distribuição dos dados em \ref{distribuicao_dados} e correlação multilinear em \ref{correlacao_multilinear}. Ela propõe um percurso que desenhamos no intuito de saber i) se a qualidade dos dados nos permite realizar outros testes estatísticos e recomendar sobre a continuidade ou não da coleta de dados com a metodologia atual do CadÚnico, ii) como a distribuição dos totais mês a mês se comporta em torno de uma média; iii) dirimir a dúvida quanto à média encontrada para o total de pessoas em situação de rua; iv) onde estão as maiores frequências, isto é, se entre oito mil e oito mil quinhentos, se entre oito mil e quinhentos e nove mil etc; v) como se comporta a distribuição de probabilidade em relação aos totais das pessoas em situação de rua, ou seja, quais são as probabilidades associadas à menor e à maior quantidade de pessoas nas ruas; vi) se o aumento ou a diminuição dos totais para cada mês pode ser explicado com as variáveis sobre o tempo que as pessoas permanecem nas ruas.\\
+
+\begin{enumerate}[3.2]
+\item{Teste Alpha}
+\item{Distribuição dos Dados}
+\begin{itemize}[3.3.1]
+\item{Histogramas}
+\item{Distribuição Normal}
+\item{Distribuição de Frequência}
+\item{Distribuição de Probabilidade}
+\end{itemize}
+\item{Correlação Multilinear \textit{Total de Pessoas em Situação de Rua v. Tempo de Rua}}
+\end{enumerate}
+\vspace{0.3cm}
+
+\subsection{Teste Alpha}
+\label{teste_alpha}
+
+O Teste Alpha é recomendável como primeira testagem para a análise do conjunto de dados selecionados. Ele nos ajuda a identificar se há alguma relação significativa entre os números trabalhados e, por conseguinte, se outras análises estatísticas podem ser aplicadas.\\ 
+
+Em linhas gerais, o alpha a ser estudado variará numa escala de 0 a 1 e acompanhará um intervalo de confiança de 95\%, isto é, com 95\% de chance de o valor a ser encontrado estar balizado entre dois outros números. Caso o alpha seja maior que 0.75, podemos classificá-lo como significante. Um resultado menor indica a necessidade de se fazer ajustes nos dados coletados como, por exemplo, sua expansão ou mesmo exclusão de dados.\\
+
+Quanto aos dados sobre a população em situação de rua, notamos que a série histórica disponibilizada tanto pela Prefeitura de Belo Horizonte quanto pelo Cadastro Único foi encurtada nos últimos meses. Portanto, de antemão, é importante ressaltar que, embora encontramos um alpha significante no que diz respeito à consistência dos dados.\\ 
+
+Outra observação a ser feita  é que existe uma lógica interna nos números, ou seja, que eles variam de forma adequada e podemos prosseguir com outros testes estatísticos. A Tabela \ref{tab:tab2} mostra o resultado do Teste Alpha com um nível de significância de 0.94. Esse \textbf{raw\_alpha} se encontra num intervalo cujo limite menor é de 0.885 e maior de 0.952. Desse modo, com 95\% de confiança, o alpha para esse conjunto de dados deve variar interposto nesses extremos.\\
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  	\renewcommand{\arraystretch}{1.2}
+  \caption{Teste Alpha Realizado em R. Série Histórica da População em Situação de Rua/BH}
+    \tabcolsep=0.15cm
+	\renewcommand{\arraystretch}{1.0}
+	\begin{adjustbox}{max width=\linewidth}
+    \begin{tabular}{rrrrrrrrrrr}
+    \hline
+    \multicolumn{11}{c}{Call: alpha(x = alpha\_test\_pop\_rua, check.keys = TRUE)} \\
+    \midrule
+         &      &      &      &      &      &      &      &      &      &  \\
+\cmidrule{3-9}         &      & \multicolumn{1}{c}{\cellcolor[rgb]{ .851,  .851,  .851}\textbf{  raw\_alpha }} & \multicolumn{1}{c}{std.alpha } & \multicolumn{1}{c}{G6(smc) } & \multicolumn{1}{c}{average\_r } & \multicolumn{1}{c}{S/N   } & \multicolumn{1}{c}{ase } & \multicolumn{1}{c}{mean } &      &  \\
+\cmidrule{3-9}         &      & \multicolumn{1}{c}{\cellcolor[rgb]{ .851,  .851,  .851}      0.94     } & \multicolumn{1}{c}{ 0.98   } & \multicolumn{1}{c}{ 0.96    } & \multicolumn{1}{c}{  0.62  } & \multicolumn{1}{c}{55} & \multicolumn{1}{c}{0.015} & \multicolumn{1}{c}{2562} &      &  \\
+         &      &      &      &      &      &      &      &      &      &  \\
+\cmidrule{3-8}         &      & \multicolumn{1}{c}{sd } & \multicolumn{1}{c}{median\_r} &      & \multicolumn{1}{c}{lower} & \multicolumn{1}{c}{alpha} & \multicolumn{1}{c}{upper} &      &      &  \\
+\cmidrule{3-8}         &      & \multicolumn{1}{c}{57} & \multicolumn{1}{c}{ 0.71} &      & \multicolumn{1}{c}{0.91 } & \multicolumn{1}{c}{0.94 } & \multicolumn{1}{c}{0.97 } &      &      &  \\
+         &      &      &      &      &      &      &      &      &      &  \\
+         &      &      &      &      &      &      &      &      &      &  \\
+         &      &      &      &      &      &      &      &      &      &  \\
+    \midrule
+    \multicolumn{11}{c}{95\% confidence boundaries						} \\
+    \midrule
+         &      &      &      &      &      &      &      &      &      &  \\
+         &      &      &      & \cellcolor[rgb]{ .851,  .851,  .851}2.5\% & \cellcolor[rgb]{ .851,  .851,  .851} & \multicolumn{1}{l}{\cellcolor[rgb]{ .851,  .851,  .851}97.5\%} &      &      &      &  \\
+         &      &      &      & \cellcolor[rgb]{ .851,  .851,  .851}0.885 & \cellcolor[rgb]{ .851,  .851,  .851} & \multicolumn{1}{l}{\cellcolor[rgb]{ .851,  .851,  .851}0.952 } &      &      &      &  \\
+         &      &      &      &      &      &      &      &      &      &  \\
+    \midrule
+    \multicolumn{11}{r}{Fonte: CadÚnico. Série Histórica sobre População em Situação de Rua Set 2020/Jun 2021} \\
+    \hline
+    \end{tabular}%
+    \end{adjustbox}
+  \label{tab:tab10}%
+\end{table}%
+\vspace{0.5cm}
+
+A série histórica utilizada nesse teste se inicia em setembro de 2020 e se estende até junho de 2021, entretanto, \textbf{os meses de fevereiro e março de 2021 possuem tabelas idênticas}. Com ou sem a exclusão de uma das tabelas, para evitar dados duplicados, o \textbf{alpha\_raw} encontrado ou simplesmente alpha foi o mesmo.\\ 
+
+É preciso que não haja confusão sobre o Teste Alpha. Ele apenas nos diz se há consistência suficiente ou não na estrutura dos dados. Também indica se a metodologia empregada na série histórica analisada tem significância mínima para seguir adiante ou não. Por isso, ressaltamos que, a partir do Teste Alpha, \textbf{é muito importante a continuidade e fortalecimento da coleta de dados sobre a população de rua para que tanto os poderes públicos quanto as comunidades engajadas no tema possam construir de forma conjunta políticas públicas e estudos que estabeleçam parâmetros mais próximos à realidade de quem vive nas ruas de Belo Horizonte}.\\
+
+
+\subsection{Distribuição dos Dados}
+\label{distribuicao_dados}
+
+O Gráfico \ref{fig:grafico_pop_rua_totais} mostra os totais extraídos da série histórica selecionada e disponibilizada tanto no banco de dados da Prefeitura de Belo Horizonte quanto do Portal Brasileiro de Dados Abertos. Ela se inicia em setembro de 2020 e se encerra em junho de 2021. Por série histórica, entenda-se um conjunto de dados que inclui os totais de cada mês da população em situação de rua além de informações sobre tempo de rua, escolaridade, recebimento ou não do Programa Bolsa Família entre outras variáveis. Portanto, a série histórica analisada é composta por um maior número de informações que as tabulações do CadÚnico, pois o objetivo desta plataforma é anunciar tendências, sobretudo, dos dois últimos meses de inúmeras variáveis sobre populações vulneráveis e não séries históricas mais completas como no Portal Brasileiro de Dados Abertos.\\
+
+O Gráfico \ref{fig:grafico_pop_rua_totais} também destaca que há duplicação do mês de fevereiro no mês de março ou vice-versa. Esse problema se encontra destacado nas duas barras com diferente da laranja. Além disso, a variação dos totais de um mês para outro tem um mínimo de 8.282 e máximo de 8.976. Como veremos mais detidamente, a média dos totais é de 8671, sendo assim, \textbf{qualquer outra média defendida para descrever a população de rua é improvável segundo a série histórica analisada}.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Totais Mês a Mês da Série Histórica do Portal Brasileiro de Dados Abertos}
+	\includegraphics[height=15cm, width=14cm]{gráficos/pop_rua_grafico_totais.pdf}
+	\label{fig:grafico_pop_rua_totais}
+\end{figure}
+
+\subsubsection{Histogramas}
+
+
+Nessa subseção, o Gráfico \ref{fig:histogramas1_2} compara dois histogramas sendo o (a) a distribuição da frequência encontrada nos totais da série histórica analisada e (b) uma distribuição de frequência ideal. Para entender como funciona um histograma, ele é semelhante a um gráfico de barras com a diferença de contar a frequência de valores em intervalos. Quanto mais meses tivermos sobre a população em situação de rua, tanto maior será a diferença de totais de mês para mês. Veja que o Gráfico \ref{fig:histogramas1_2} (a) possui nove barras para dez meses e não dez. O que o histograma nos diz é que entre uma barra e outra ou entre um total e outro, de mês para mês, não foram encontrados dados que preenchessem esses intervalos.\\
+
+\begin{figure}[H]
+	\caption{Histogramas sobre os Totais da População em Situação de Rua (I)}
+	\subfloat[][\centering Distribuição de Frequência Encontrada]
+	{\includegraphics[height=11cm, width=7.5cm]{gráficos/pop_rua_histo_pbh.pdf}}
+	\qquad
+	\subfloat[][\centering Distribuição de Frequência Comum]
+	{\includegraphics[height=11cm, width=7.5cm]{gráficos/pop_rua_histo_pbh2.pdf}}
+	\label{fig:histogramas1_2}
+\end{figure}
+
+ Mas como solucionar essa falta de dados se a coleta deles é de mês a mês? A única saída para esse problema de distribuição de dados é a expansão da série histórica para meses anteriores ao de setembro de 2020. \textbf{É imprescindível que a Prefeitura de Belo Horizonte compreenda a necessidade e o dever ético e administrativo de disponibilização dos dados completos, confiáveis e transparentes da série histórica referente à população em situação de rua no CadÚnico}.\\
+
+Além da frequência, o histograma geralmente traz barras maiores mais ao centro e as menores nas laterais. \textbf{Quando não se percebe visualmente esse efeito, temos alguns indícios de que a distribuição dos dados analisados não nos proporciona diferentes intervalos e isso compromete, por exemplo, o estudo da frequência sobre a população em situação de rua no município}. Por exemplo, quais os meses em que a população de rua cresce? Temos apenas duas frequências registradas entre 8.700 e 8.800 pessoas no Gráfico \ref{fig:histogramas1_2} (a). Esse padrão se repete para além dos dez meses da série histórica? E, nesses dois meses que faltam para completar os últimos doze meses, tivemos maiores ou menores totais? Se aumentarmos a série histórica com mais meses, teremos mais vezes o intervalo 8700-8800, o intervalo 8900-9000 ou outro qualquer? Há grande ou pouca variação dos valores totais de um mês para outro?\\
+
+Essas questões são algumas indagações iniciais que o município de Belo Horizonte deve responder para cumprir as suas atribuições na gestão do CadÚnico, assim como de aumentar a ação de cuidado da população em situação de rua no município.\\
+
+\textbf{Isso também significa projeção de investimentos e análise de custos. Sabemos que as sazonalidades e condições extremas como inverno, chuvas ou calor em excesso inevitavelmente drenam recursos humanos e de caixa na administração pública. Sem maior precisão dessas frequências, a Prefeitura de Belo Horizonte não conseguirá prever padrões ou fazer estimativas que orientem políticas públicas com menor desperdício de dinheiro, uma vez que a coleta de dados também mostra quais meses o trabalho do município deverá ser mais ou menos intenso.}\\
+
+Os Gráficos \ref{fig:histogramas1_2} (b) e \ref{fig:histogramas3_4} demonstram como seria uma distribuição de frequência comum, ideal e expandida com 10, 20 e 30 meses respectivamente. Ainda que uma distribuição de frequência não tenha essa forma de ”sino de igreja” , o mais importante é que não existam lacunas em branco entre uma barra e outra do histograma.\\
+
+\begin{figure}[H]
+	\caption{Histogramas sobre os Totais da População em Situação de Rua}
+	\subfloat[][\centering Distribuição de Frequência Ideal]
+	{\includegraphics[height=11cm, width=7.5cm]{gráficos/pop_rua_histo_pbh3.pdf}}
+	\qquad
+	\subfloat[][\centering Distribuição de Frequência Ideal Expandida]
+	{\includegraphics[height=11cm, width=7.5cm]{gráficos/pop_rua_histo_pbh4.pdf}}
+	\label{fig:histogramas3_4}
+\end{figure}
+
+Passemos a seção seguinte sobre a distribuição normal dos dados analisados e comentários sobre a média encontrada nos totais da população em situação de rua.
+
+
+\subsubsection{Distribuição Normal}
+\label{distri_normal}
+
+Essa subseção continua a análise da distribuição de dados como na anterior, mas com ênfase na média para a série histórica estudada sobre a população em situação de rua em Belo Horizonte.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Distribuição Normal dos Totais Encontrados}
+	\includegraphics[height=15cm, width=11cm]{gráficos/pop_rua_dist_normal_pbh.pdf}
+	\label{fig:pop_rua_dist_normal}
+\end{figure}
+
+\textbf{O Gráfico \ref{fig:pop_rua_dist_normal} nos indica que a média encontrada foi de 8.671 pessoas em situação de rua no município, com desvio-padrão amostral de 242 registros para a série temporal de set/2020 a jun/2021\footnote{A média menos o desvio-padrão amostral é igual a 8.429. Essa seria a média "mínima" em nossa série histórica. Caso somemos a média de 8671 com 242, a média "máxima" da série chegaria a 8.913.}. Qualquer valor inferior a essa média para além do desvio-padrão amostral subestima a dinâmica dos totais da população em situação de rua na capital mineira. Além disso, médias abaixo de 8.429 indivíduos comprometem gravemente as ações de cuidado e atenção a esse grupo de cidadãos historicamente vulnerabilizados}\footnote{Ver \href{https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/relatorio-completo.html}{CadÚnico, Seção Relatórios.}}.\\
+
+\textbf{O estudo das médias também auxilia o planejamento da Prefeitura de Belo Horizonte quanto à coleta de dados e ao acesso aos recursos do governo federal com base no índice de Gestão Descentralizada para os municípios (IGD-M). Atualmente, o IGD-M belo-horizontino é de 0,86 numa escala de 0 a 1 tendo como último repasse R\$ 282.304,49 em maio de 2021}.\textbf{Caso o IGD-M fosse maior, com mais dados e expansão da série histórica para mais meses, a cidade poderia ter chegado a quase meio milhão de reais ou R\$ 440.098,75}: ``Os valores financeiros calculados com base no IGD-M e repassados ao município no exercício corrente somam o montante de R\$ 1.383.292,00. Em maio de 2020, havia em conta corrente do município (BL GBF FNAS) o total de R\$ 3.110.659,12''\footnote{Ver \href{https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/relatorio-resumido.html}{CadÚnico Para Incluir}.}.\\
+
+\textbf{A falta de dados também pode significar sobrecarga de trabalho para as equipes responsáveis pela coleta de dados, uma vez que médias subestimadas pela Prefeitura de Belo Horizonte também dimensionam de maneira equivocada o número de profissionais nas equipes que estão mais próximas à população de rua, como Assistência Social e Saúde}.\\ 
+
+Em outra \href{https://polos.direito.ufmg.br/wp-content/uploads/2021/09/Nota-Tecnica-Sistema-Unico-de-Assistencia-Social-SUAS-BH.pdf}{Nota Técnica elaborada pelo Programa Polos de Cidadania da UFMG} e publicada em junho deste ano, ressaltamos (1) a importância do fortalecimento do SUAS e das(os) suas(eus) trabalhadoras(es), que têm desempenhado com tanta dedicação e empenho as suas funções e prestado serviços públicos essenciais e indispensáveis à nossa população, em especial à mais vulnerabilizada, nesse difícil momento pandêmico do país e (2) a urgente inclusão dessas(es) profissionais nos grupos prioritários do Plano Nacional de Operacionalização da Vacina contra a COVID-19 do Ministério da Saúde.\\
+
+Lamentavelmente, essas(es) profissionais, tão vitais para a gestão do CadÚnico e toda a política pública de Assistência Social do município, continuam à espera de uma resposta positiva do Governo Federal e da Prefeitura de Belo Horizonte quanto à inclusão nos grupos prioritários da vacinação, apesar do excelente e inédito levantamento feito pelo Fórum Municipal de Trabalhadoras(es) do SUAS de Belo Horizonte, indicando sentimentos e percepções de frustração, desmotivação, tristeza, desesperança, desamparo, abandono, impotência, injustiça, decepção, desrespeito, descaso, desvalorização, indignação, revolta e a fragilização e a vulnerabilização das(os) trabalhadoras(es) do SUAS em plena pandemia da COVID-19.\\
+
+
+\subsection{Frequência Acumulada}  
+
+A frequência acumulada nos indica como os dados da série histórica sobre os totais da população de rua se dispõem. Por exemplo, no Gráfico \ref{fig:pop_rua_freq_acum}, notamos que a frequência dos totais para cada mês até 8.500 pessoas em situação de rua é bem menor que os totais que estão acima desse valor. O que faz sentido, pois, se a média da série histórica, tal como vimos na subseção anterior, é de 8.671, ao adicionarmos mais meses é muito provável que os totais se aloquem entre 8.500 e 9.500 pessoas vivendo nas ruas de Belo Horizonte.\\  
+
+\begin{figure}[H]
+\centering
+	\caption{Distribuição de Frequência dos Totais Encontrados}
+	\includegraphics[height=12cm, width=16cm]{gráficos/pop_rua_frequencia_acum_pbh.eps}
+	\label{fig:pop_rua_freq_acum}
+\end{figure}
+
+Sublinhamos que essas estimativas na distribuição da frequência acumulada em torno da média encontrada podem variar, com a inclusão de mais meses, que apresentem totais com mais ou menos pessoas em situação de rua no município. Contudo, sem uma série histórica para além dos dez meses oferecidos, qualquer exercício quantitativo não passaria de mera especulação. Por outro lado, se é verdade que as questões estruturais, como desemprego em massa, empobrecimento das famílias e nível de endividamento, para ficar em alguns exemplos, possuem relação com o número de pessoas em situação de rua, \textbf{é pouco provável que o número da população em situação de rua decresça no cenário econômico e pandêmico do Brasil atual}.
+
+\subsubsection{Distribuição de Probabilidade}  
+
+A função de densidade de probabilidade pode ser definida como uma expressão estatística sobre uma distribuição de probabilidade ou a probabilidade de um resultado. Ela se dá por meio de uma variável aleatória discreta, isto é, um número que podemos identificar. No caso da série histórica analisada, o ponto é identificar quais probabilidades estão relacionadas aos totais menores e quais aos maiores.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Distribuição de Probabilidades dos Totais Encontrados}
+	\includegraphics[height=13cm, width=11cm]{gráficos/pop_rua_dist_probabilidade_pbh.pdf}
+	\label{fig:pop_rua_dist_prob}
+\end{figure}
+
+\textbf{O Gráfico \ref{fig:pop_rua_dist_prob} indica com uma função variando entre 0 e 1 que, com uma probabilidade acumulada de 0.2, o total de pessoas em situação de rua não seria menor que 8.400}. Se nos movermos ao longo do eixo das probabilidades, vemos que 0.4 corresponde a 8.600, 0.6 a 8.800, 0.8 a 9.000 e 1.0 atinge 9.200 pessoas vivendo nas ruas de Belo Horizonte.\\
+
+Como já mencionado anteriormente, o Decreto que regulamenta o CadÚnico prevê que sejam considerados atualizados os cadastros com até 2 anos de atualização. Dessa forma, a partir da Tabela 6, compreende-se que 56\% dos 8.565 cadastros de agosto/2021 e 57\% dos 8.472 cadastros de julho/2021 encontram-se atualizados. Contudo, fica a pergunta sobre onde e como estão as demais pessoas em situação de rua com cadastrados desatualizados em Belo Horizonte em plena pandemia da COVID-19? Deixaram de existir por conta da desatualização do cadastro? A Prefeitura de Belo Horizonte continuará insistindo em enxergar somente as pessoas em situação de rua com cadastros atualizados nos últimos 12 meses? Com que base legal considerarão somente 2.527 pessoas em situação de rua em Belo Horizonte com essa visão deturpada da realidade? No que tange à Situação do Domicílio, a maior parte da população em situação de rua deixa o campo sem resposta no formulário, talvez por ser esta uma questão aparentemente óbvia, estando apenas uma pessoa em em zona rural. É imprescindível a elaboração e implantação de políticas públicas estruturantes de moradia para a garantia de direitos da população em situação de rua em Belo Horizonte, assim como é fundamental que as pessoas se sintam pertencentes a um determinado domicílio.
+
+\subsection{Correlação Multilinear e Total de Pessoas em Situação de Rua}
+\label{correlacao_multilinear}
+
+
+A correlação multilinear analisa que tipo de atração os totais de cada mês possuem com os diferentes períodos com ocorrência de pessoas em situação de rua em Belo Horizonte. Apenas para esclarecer, as categorias de tempo definidas pelo CadÚnico são: i) pessoas com até seis meses sem moradia, ii) de seis meses a um ano, iii) de um ano a dois, iv) de dois anos a cinco, vi) de cinco anos a dez ou vii) mais de dez anos. Essas são as chamadas variáveis independentes do nosso modelo, pois ajudam a explicar se o total pode ser previsto com base no tempo de permanência nas ruas das pessoas. Nas seguintes subseções, teceremos alguns comentários sobre o R quadrado múltiplo, o R quadrado ajustado e os resíduos do modelo.
+
+\subsubsection{R Quadrado e R Quadrado Ajustado}
+
+O R quadrado é uma medida estatística que revela o quão próximo ou distante os dados analisados estão de uma linha ajustada. O resultado do cálculo de um modelo é expresso por meio do R quadrado que varia entre 0 e 1. Assim, quanto mais próximo de 1, maior o ajuste do modelo; por outro lado, tanto mais encostado no valor 0 menos ajustado é o modelo.\\
+
+Na Tabela \ref{tab:tab11}, verificamos na parte inferior que o R quadrado é igual a 1 e o R quadrado ajustado também. É como se tivéssemos todos os dados da nossa série histórica exatamente sobre a linha ajustada do modelo o que por si só é muito improvável. \\
+
+No caso do R quadrado múltiplo, por haver seis categorias de tempo definidas pelo CadÚnico em nosso estudo, é esperado que o R seja maior. Isso porque o número de preditores ou variáveis independentes tende a afetar positivamente o resultado. Para contornar esse problema, o R quadrado é ajustado, pois ele é sempre menor que o R quadrado. Em síntese, um modelo com Rs acima de 0.95 está provavelmente enviesado e, dessa forma, requer nova inclusão de dados ou expansão de sua série histórica.\\
+
+\begin{landscape}
+\pagestyle{empty}
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{Regressão Multilinear Realizada em R Total da População em Situação de Rua como Variável Dependente (I)}
+    \begin{tabular}{rrrrrrr}
+    \hline
+    \multicolumn{7}{c}{Call: Perfil das Pessoas em Situação de Rua/BH - Série Histórica Set/2020 - Jun/2021 $n = 10$} \\
+    \midrule
+         &      &      &      &      &      &  \\
+    \textbf{Residuals:} & 1    & 2    & 3    & 4    & 5    &  \\
+         & 1.14E-10 & -8.56E-11 & -4.93E-11 & 7.94E-11 & 1.65E-11 &  \\
+         & 6    & 7    & 8    & 9    & 10   &  \\
+         & -5.61E-11 & -5.78E-11 & 2.04E-11 & -9.50E-12 & 2.76E-11 &  \\
+         &      &      &      &      &      &  \\
+         &      &      &      &      &      &  \\
+    \textbf{Tempo de Rua} &      & \textbf{estimate} & \textbf{std.error} & \textbf{statistic} & \textbf{p.value} &  \\
+    (Intercept) &      & -2.88E-12 & 3.78521E-12 & -0.759819448 & 0.502616934 &  \\
+    Até 06 Meses &      & 1.00E+03 & 2.04219E-15 & 4.8967E+14 & 1.87828E-44 & \multicolumn{1}{c}{***} \\
+    Entre 06 Meses e 1 Ano &      & 1.00E+03 & 1.82466E-14 & 5.48046E+13 & 1.33974E-41 & \multicolumn{1}{c}{***} \\
+    Entre 1 e 2 Anos &      & 1.00E+03 & 1.51926E-14 & 6.58213E+13 & 7.73341E-42 & \multicolumn{1}{c}{***} \\
+    Entre 2 e 5 Anos &      & 1.00E+03 & 5.63618E-15 & 1.77425E+14 & 3.94844E-43 & \multicolumn{1}{c}{***} \\
+    Entre 5 e 10 Anos &      & 1.00E+03 & 7.73935E-15 & 1.2921E+14 & 1.02231E-42 & \multicolumn{1}{c}{***} \\
+    Mais de 10 Anos &      & 1.00E+03 & 9.49095E-15 & 1.05363E+14 & 1.88539E-42 & \multicolumn{1}{c}{***} \\
+         &      &      &      &      &      &  \\
+    \midrule
+    \multicolumn{7}{r}{Signif. codes:  0***  0.001**  0.01*  0.05  0.1  1} \\
+    \midrule
+         &      &      &      &      &      &  \\
+    \multicolumn{2}{r}{Residual standard error: } & \multicolumn{5}{l}{1.11E-10 on 3 degrees of freedom} \\
+    \multicolumn{2}{r}{Multiple R-squared: } & \multicolumn{1}{l}{1} & \multicolumn{2}{r}{} &      &  \\
+    \multicolumn{2}{r}{Adjusted R-squared:} & \multicolumn{1}{l}{1} &      &      &      &  \\
+    \multicolumn{2}{r}{p-value: } & \multicolumn{1}{l}{< 2.2e-16} &      &      &      &  \\
+    \multicolumn{2}{r}{F-statistic: } & \multicolumn{5}{l}{7.096e+30 on 6 and 3 DF } \\
+         &      &      &      &      &      &  \\
+    \multicolumn{7}{r}{\textbf{Warning message: In summary.lm(multi.reg): essentially perfect fit: summary may be unreliable}} \\
+         &      &      &      &      &      &  \\
+    \hline
+    \end{tabular}%
+  \label{tab:tab11}%
+\end{table}%
+\end{landscape}
+
+
+\begin{landscape}
+\pagestyle{empty}
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+\begin{table}[htbp]
+  \centering
+  \caption{Regressão Multilinear Realizada em R Total da População em Situação de Rua como Variável Dependente (II)}
+    \begin{tabular}{rrrrrrr}
+    \hline
+    \multicolumn{7}{c}{Call: Perfil das Pessoas em Situação de Rua/BH - Série Histórica Set/2020 - Jun/2021  $n = 9$} \\
+    \midrule
+         &      &      &      &      &      &  \\
+    \textbf{Residuals:} & 1    & 2    & 3    & 4    & 5    &  \\
+         & -8.09E-10 & 6.38E-10 & 3.12E-10 & -5.64E-10 & -8.37E-11 &  \\
+         & 6    & 7    & 8    & 9    &      &  \\
+         & 1.13E-10 & -2.26E-10 & 1.13E-10 & -2.26E-10 &      &  \\
+         &      &      &      &      &      &  \\
+         &      &      &      &      &      &  \\
+    \textbf{Tempo de Rua} &      & \textbf{estimate} & \textbf{std.error} & \textbf{statistic} & \textbf{p.value} &  \\
+    (Intercept) &      & 1.21E-08 & 3.57E-08 & 3.40E+02 & 0.766 &  \\
+    Até 06 Meses &      & 1.00E+03 & 1.94E-11 & 5.15E+16 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+    Entre 06 Meses e 1 Ano &      & 1.00E+03 & 1.74E-10 & 5.74E+15 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+    Entre 1 e 2 Anos &      & 1.00E+03 & 1.43E-10 & 7.00E+15 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+    Entre 2 e 5 Anos &      & 1.00E+03 & 5.35E-11 & 1.87E+16 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+    Entre 5 e 10 Anos &      & 1.00E+03 & 7.30E-11 & 1.37E+16 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+    Mais de 10 Anos &      & 1.00E+03 & 9.03E-11 & 1.11E+16 & 2.00E-16 & \multicolumn{1}{c}{***} \\
+         &      &      &      &      &      &  \\
+    \midrule
+    \multicolumn{7}{r}{Signif. codes:  0***  0.001**  0.01*  0.05  0.1  1} \\
+    \midrule
+         &      &      &      &      &      &  \\
+    \multicolumn{2}{r}{Residual standard error: } & \multicolumn{5}{l}{1.04E-9  on 2 degrees of freedom} \\
+    \multicolumn{2}{r}{Multiple R-squared: } & \multicolumn{1}{l}{1} & \multicolumn{2}{r}{} &      &  \\
+    \multicolumn{2}{r}{Adjusted R-squared:} & \multicolumn{1}{l}{1} &      &      &      &  \\
+    \multicolumn{2}{r}{p-value: } & \multicolumn{1}{l}{< 2.2e-16} &      &      &      &  \\
+    \multicolumn{2}{r}{F-statistic: } & \multicolumn{5}{l}{7.948e+28 on 6 and 2 DF} \\
+         &      &      &      &      &      &  \\
+    \multicolumn{7}{r}{\textbf{Warning message: In summary.lm(multi.reg): essentially perfect fit: summary may be unreliable}} \\
+         &      &      &      &      &      &  \\
+    \hline
+    \end{tabular}%
+  \label{tab:tab12}%
+\end{table}%
+\end{landscape}
+
+O próprio programa R emite um aviso sobre a suposta perfeição do modelo e alerta sobre \textbf{a inconfiabilidade da série}. Descartamos a possibilidade de que os dados dos meses de fevereiro e março pudessem interferir no resultado do R quadrado e, por isso, excluímos a tabela do mês de fevereiro. Poderíamos ter removido a do mês de março, já que as duas são idênticas e, sendo assim, basta que uma ou outra permaneça. Portanto, com a exclusão dos dados de um mês repetido, reduzimos nosso n de 10 para 9, ou seja, de dez meses para nove meses. A Tabela \ref{tab:tab12} mostra que a retirada de um mês não interferiu nem em nosso R quadrado nem em nosso R quadrado ajustado. O modelo segue inconfiável.\\    
+
+\subsubsection{Resíduos do Modelo}
+
+
+As Tabelas \ref{tab:tab11} e \ref{tab:tab12} trazem, além do R quadrado e do R ajustado, os valores dos resíduos correspondentes a cada um dos meses da série histórica analisada. Esses valores são importantes de serem observados, pois a dispersão dos pontos acima ou abaixo de uma linha ajustada demostrará se nosso modelo pode estar sobrestimado ou não. O Gráfico \ref{fig:gráfico9} apresenta todos os meses da série sendo, portanto,  $n = 10$. A análise dos resíduos mostra o quão distante e irregular é a distribuição dos coeficientes. Um dos eixos expressa o número total de pessoas em situação de rua por mês e o outro as distâncias positivas e negativas dos coeficientes em relação a curva ajustada. O Gráfico \ref{fig:gráfico10} descreve o mesmo processo, mas com a exclusão dos dados de um mês por representar a mesma tabela dois meses distintos. Dessa forma, a série histórica passa a ser  $n = 9$ e as variáveis de tempo ``até seis meses nas ruas”, ``de seis meses a um ano” etc continuam as mesmas.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Gráfico de Dispersão dos Resíduos  $n = 10$}
+	\includegraphics[height=10.5cm, width=15.5cm]{gráficos/pop_rua_regression_multi_residuos.pdf}
+	 \label{fig:gráfico9}%
+\end{figure}
+
+Com base nos resultados da regressão multilinear, com R quadrado e R ajustado iguais a 1, a análise dos resíduos apenas confirma a hipótese de que é recomendável que a série histórica em questão seja expandida, acompanhada com maior frequência e, sobretudo, se torne estável. Além disso, para entender o fenômeno da população de rua e seus totais mensais, requer-se mais cuidado na coleta de dados com pesquisas itinerantes pela cidade e não apenas a inclusão das pessoas em situação de rua que chegam às unidades de atendimento como o CRAS.\\
+
+Da maneira como estão, as estatísticas sobre o tema enviesa estudos e implementação de políticas públicas, subestima valores e sobrestima a confiança nos totais. O objetivo de visualizar a dispersão de resíduos é exatamente o fato de podermos duvidar dos R obtidos e, consequentemente, voltar a incluir dados e testar novamente o modelo de regressão múltipla\footnote{Não é possível saber se os dados são preliminares ou já estão consolidados no site do CadÚnico. O mesmo ocorre na página da Prefeitura Municipal de Belo Horizonte.}.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Gráfico de Dispersão dos Resíduos  $n = 9$}
+	\includegraphics[height=10.5cm, width=15.5cm]{gráficos/pop_rua_regression_multi_residuos2.pdf}
+	 \label{fig:gráfico10}%
+\end{figure}
+
+\newpage
+
+\section{A Política de Morte}
+\vspace{1cm}
+
+\subsection{A morte enquanto processo}
+\label{politica_morte}
+
+As palavras assustam e nauseam os sentidos, mas a frase curta \textbf{a política de morte} conceitua o abandono e a produção de invisíveis. Em grande medida, a morte não é definida aqui como apenas a interrupção da vida. Ela é mais a ressignificação de um processo em que alguns indivíduos tomam decisões cujos efeitos sobrevêm avassaladoramente aos mais vulneráveis. A política de morte é um espaço político, pois diz respeito essencialmente à resolução de conflitos humanos necessariamente com a perda de vidas. Em síntese, é a face do uso legítimo da força que parte importante dos poderes tem para governar em guerras e pandemias constantes. Conforme evidenciamos nas subseções \ref{pobreza_metropolitana} e \ref{pobreza_metropolitana2}, a Região Metropolitana de Belo Horizonte tem deixado de ser somente uma área de pobreza e de miséria conjuntural para o território urbano da desumanização. À medida que partimos de cidades menores para a capital mineira, a carência aumenta e os cuidados do Estado diminuem. Por isso, é imprescindível que o dimensionamento do tempo de rua de uma população que só cresce seja aferido em séries históricas mais longas, uma vez que Belo Horizonte, ao subdimensionar o número de pessoas em situação de rua, está na prática, promovendo a política de morte do deixar morrer, não somente em tempos de pandemia da COVID-19, mas a longo prazo também.\\
+
+Do ponto de vista da coordenação de verbas entre os entes federativos, a decisão de buscar menos ou mesmo não coletar dados sobre a população de rua não decorre da falta de dinheiro. Na subseção \ref{distri_normal}, vimos que o Fundo Nacional de Assistência Social (FNAS) tem assistido o Fundo nacional de Assistência Social (FMAS) e este, por conseguinte, depositado fundos na conta do Município de Belo Horizonte. Contudo, conforme mostra o último relatório do CadÚnico, a relação entre recursos recebidos e o saldo disponível em conta corrente: ``mostra que o município está com uma execução muito baixa dos recursos transferidos pelo IGD-M no último ano. Importante verificar com o FMAS e o órgão financeiro do município o que aconteceu no período e fazer a reprogramação desses recursos para o ano de 2018, considerando essa disponibilidade de recursos no Plano de Ação 2018. Outro ponto a ser observado é a Portaria GM/MDS nº 517, de 20 de dezembro de 2017, que limita o repasse dos recursos do IGD-M de acordo com o montante financeiro em conta corrente do município''. Não é provável que a administração pública belo-horizontina seja capaz de dimensionar as relações causais e ser capaz de identificar repetições de padrões sobre a população em situação de rua sem a valorização do corpo de trabalhadores na linha de frente da assistência social no município.\\
+
+Há algumas ferramentas na pesquisa experimental ou contínua que podem mudar esse cenário de terra sonâmbula a que estamos expostos todos nós. Ainda que nauseantes, se continuados, expandidos e estáveis, os dados sobre esses seres humanos à margem ou à beira de um lugar sem endereço fixo podem salvar e ressignificar vidas. Eles fortalecem não somente as investigações experimentais como tantas outras metodologias do saber, porque permitem um tema ser observado, incluindo seus resultados na forma de nota técnica ou outro gênero textual científico, de modo sequencial. A ideia de estudar o fenômeno da população de rua é acompanhar e compreender os processos que a produzem e levam milhares de indivíduos à condição de perda de dignidade. O Programa Transdisciplinar Polos de Cidadania publicou, por exemplo, um relatório técnico-científico em abril de 2021 discutindo o fenômeno da população de rua no Brasil num trabalho intitulado \href{https://ufmg.br/comunicacao/assessoria-de-imprensa/release/relatorio-do-programa-polos-de-cidadania-da-ufmg-ajuda-a-corrigir-plano-de-imunizacao-da-populacao-de-rua}{Relatório Técnico-Científico: Dados Referentes ao Fenômeno da População em Situação de Rua no Brasil}. Entretanto, para seguir buscando respostas sobre a situação dos que vivem nas ruas de Belo Horizonte é preciso que os dados sejam minimamente estáveis e que as estatísticas orientadoras das políticas públicas municipais sejam compartilhadas abertamente.\\ 
+
+Com dados amostrais abertos e mais perenes, sem que se percam ou se tornem inacessíveis de um momento a outro, é possível encontrar fatores recorrentes e variáveis capazes de explicar o fenômeno da população de rua. A presente Nota Técnica busca superar essa ausência de séries históricas ao revelar que a falta ou deterioração delas engendra na prática um processo de morte. Além disso, a precarização das condições de trabalho daqueles que tem como atividade profissional cuidar de seres humanos, como os profissionais da assistência social e entrevistadores que atuam nas ruas, para ficar em dois exemplos diretamente relacionados à população de rua, desencadeia uma série de violações de princípios jurídicos da administração pública e de direitos fundamentais segundo abordaremos na seção \ref{politica_morte}. A Prefeitura de Belo Horizonte precisa motivar de forma mais adequada suas decisões e ser mais transparente quanto aos critérios empregados nas suas tomadas de decisões. Por outro lado, é importante que o judiciário entenda que dada a dimensão e complexidade que tem a região metropolitana de Belo Horizonte, como visto na subseção \ref{pobreza_metropolitana2}, os dados precisam ser inseridos tanto nas interpelações direcionadas ao poder executivo quanto na própria instrução de processos. A duplicidade de dados em tabelas ou amostras pouco exatas, com grande probabilidade de que produzam resultados enviesados, como vimos na subseção \ref{correlacao_multilinear}, portanto, desfiguram não apenas a efetivação de direitos fundamentais, mas, sobretudo, impõe enquanto paradigma a lógica ''quem deve morrer e quem deve viver" por omissão, negligência, desproporcionalidade nos atos e discriminação negativa.\\    
+
+\subsection{Necroeconomia: Estruturas da Exclusão e do Deixar Morrer}
+\label{necroeconomia}
+
+Muito embora o poder vinculado se diferencie dos atos da administração não previstos em lei, como é o caso daqueles praticados com base no poder discricionário, é também verdade que as decisões da Prefeitura de Belo Horizonte com relação às séries históricas e bancos de dados sobre a população em situação de rua devem estar fundamentadas no interesse público. Além disso, as instâncias decisórias do poder executivo municipal, que definem as práticas e prioridades para o trabalho da coleta e disponibilização de dados, devem considerar os limites da lei no exercício do poder discricionário sob pena de infringir os próprios princípios norteadores do regime jurídico administrativo. Não é justificativa razoável a falta de atualização de cadastros pelo fato de a Prefeitura de Belo Horizonte não ter dinheiro em caixa para a condução dos trabalhos. Isso porque o município mesmo poderia arrecadar mais e não o fez.\\
+
+Dada a realidade de quase nomadismo permanente entre as pessoas em situação de rua na cidade, a prefeitura precisa buscar alternativas para aumentar o nível de atualização cadastral das pessoas em situação de rua e, por conseguinte, IGD-M. No caso concreto, o funcionamento do IGD-M sob o princípio da eficiência no Direito Administrativo somente pode decorrer de fontes contínuas, atualizadas, estáveis assim como transparentes e, caso o poder municipal falhe em pelo menos uma dessas etapas, significará menos recursos e repasses do Governo Federal. Assim, a Prefeitura de Belo Horizonte, ao subestimar a relevância de oferecer informações de maior qualidade ao CadÚnico enquanto política pública, na prática, está subtraindo fontes de financiamento de populações vulneráveis.\\
+
+Reproduzimos o trecho da seção \ref{distri_normal} em que ressaltamos a relevância do estudo das médias para auxiliar o planejamento da Prefeitura de Belo Horizonte quanto à coleta de dados e ao acesso aos recursos do governo federal com base no índice de Gestão Descentralizada para os municípios (IGD-M): \textbf{``Atualmente, o IGD-M belo-horizontino é de 0,86 numa escala de 0 a 1 tendo como último repasse R\$ 282.304,49 em maio de 2021.Caso o IGD-M fosse maior, com mais dados e expansão da série histórica para mais meses, a cidade poderia ter chegado a quase meio milhão de reais ou R\$ 440.098,75". No relatório do Governo Federal: ``Os valores financeiros calculados com base no IGD-M e repassados ao município no exercício corrente somam o montante de R\$ 1.383.292,00. Em maio de 2020, havia em conta corrente do município (BL GBF FNAS) o total de R\$ 3.110.659,12''}\footnote{Ver \href{https://aplicacoes.mds.gov.br/sagirmps/bolsafamilia/relatorio-resumido.html}{CadÚnico Para Incluir}.}.\\
+
+O Gráfico \ref{fig:pop_rua_igd_serie} apresenta a série histórica 2015-2021 sobre os valores repassados ao Município de Belo Horizonte para fortalecer a gestão descentralizada do CadÚnico. Os dados de 2015 começam em agosto e terminam em dezembro do mesmo ano\footnote{Os meses anteriores estão em outra série histórica do CadÚnico. Por questões metodológicas, resolvemos não incluí-la.}. Todos anos que se seguem estão completos com exceção do dado de setembro de 2020 que não se encontra na série. Quanto ao ano de 2021, a série termina em maio sendo que o saldo de repasses desde de novembro de 2020 foi zero. Contudo, a diminuição de verbas do governo federal com finalidade de fortalecer o cadastro de populações vulneráveis já apresentou uma queda brusca entre outubro e novembro de 2018. A queda foi de 15.661,74 para 3.064,12. Desde então, as transferências têm minguado e chegado à situação em que a cidade se encontra atualmente.\\
+
+
+\begin{figure}[H]
+\centering
+	\caption{Índice de Gestão Descentralizada dos Municípios (IGD-M), Série Histórica, Valores Repassados (R\$), 2015-2021}
+	\includegraphics[height=12cm, width=15cm]{gráficos/pop_rua_igd.pdf}
+	\label{fig:pop_rua_igd_serie}
+\end{figure}
+
+O Gráfico \ref{fig:pop_rua_igd_anual} deixa evidente o impacto anual causado na administração do CadÚnico com esses recursos. De 2015 a 2017, o acumulado nos repasses saiu de 64.160,98 para 151.304,92 até atingirem 170.938,19. Em 2018, as somas acumuladas foram de 159.458,63 e, depois, despencaram para 20.775,77 em 2019 e 11.432,82. Até maio do ano de 2021, o acumulado foi zero. \textbf{Essas informações sobre os valores repassados à Prefeitura de Belo Horizonte trazem à tona as estruturas econômicas da política de morte e do deixar morrer}.\\
+
+\textbf{Ao deixar de angariar os recursos de nível federal, a administração pública compromete o trabalho do Sistema Único de Assistência Social (SUAS) e de toda forma de auxílio direto ou indireto que as pessoas em situação de rua tanto precisam. Se a atualização do cadastro resulta em mais investimentos na área social, por meio da coleta de dados e sua disponibilização em forma de séries históricas, ela também significa a efetivação de direitos fundamentais. Por isso, a liberdade discricionária no poder de decisão da prefeitura deve estar restringida pelo controle de seus atos de modo que a economia do IGD-M não se torne um aparato técnico gerador de riscos à vida e morte}.\\
+
+\begin{figure}[H]
+\centering
+	\caption{Índice de Gestão Descentralizada dos Municípios (IGD-M), Anual, Valores Repassados (R\$), 2015-2021}
+	\includegraphics[height=11cm, width=14cm]{gráficos/pop_rua_igd_anual.pdf}
+	\label{fig:pop_rua_igd_anual}
+\end{figure}
+
+\subsection{Necropolítica: Políticas Públicas do Deixar Morrer}
+\label{necropolitica}
+
+A atuação da Administração Pública deve estar orientada pelo interesse público e atinente aos direitos e garantias individuais previstos na Constituição Federal de 1988. \textbf{Desse modo, a inviabilização do acesso aos dados e séries históricas sobre a população de rua suscita o debate sobre o exercício dos poderes dos administradores públicos que, no caso, obriga, sobretudo, a Prefeitura de Belo Horizonte a responder por decisões arbitrárias. A conduta de todos os atos praticados na esfera pública não pode desviar-se do exercício do poder vinculado daquilo que a lei prevê. Conforme o Artigo 6º do Decreto nº 7.053 de 2009, a prefeitura tem por tarefa, assim, produzir, sistematizar e disseminar dados bem como indicadores socioeconômicos e culturais sobre populações vulneráveis. A liberdade para elaborar as séries históricas não é, portanto, absoluta e sim relativa. Não foi encontrada qualquer evidência material quanto à impossibilidade de cumprir com esse dever por ruptura de poder hierárquico ou indisciplina verificada entre os agentes subordinados que atuam na linha de frente da coleta de dados sobre as pessoas em situação de rua. Alerta-se ainda para a nulidade daqueles atos que, ao ultrapassarem a linha daquilo que define a lei, também respondem por atos arbitrários e são passíveis de correção judicial. São os princípios da legalidade, impessoalidade e publicidade, previstos no Artigo 37º da Constituição Federal de 1988, alguns dos principais pilares para a produção de séries históricas e alimentação do CadÚnico}.\\
+
+O uso do poder discricionário, que permite a conveniência e oportunidade com alguma liberdade de escolha ao agente público, não pode ser abusivo de acordo com \cite{arbit1, arbit2, arbit3}. Se a Prefeitura de Belo Horizonte pauta sua ação fora do que determina a legislação ou impede o seu cumprimento, viola direitos fundamentais de seus cidadãos e sobrecarrega outros poderes nos respectivos atos de correção. \textbf{De acordo com o que vimos na seção \ref{atualizacao_cadastral}, nos últimos 12 meses, tendo como referência julho de 2021, das 8.429 pessoas em situação de rua apenas 2.251 tiveram seu cadastro atualizado; no mês de agosto, 2.527 de 8.565}. O Decreto nº 6.135 de 2007, que dispõe sobre o Cadastro Único para Programas Sociais do Governo Federal, vincula o Decreto nº 9.462 de 2018 a suspender ou mesmo a não conceder o benefício, por exemplo, da prestação continuada em seu Artigo 12º, parágrafos 1º e 2º. Esse é um indício daquilo que definimos como um processo de deixar morrer pelo fato de a Prefeitura de Belo Horizonte não assistir, excluir ou mesmo cuidar menos do que deveria. A necropolítica é, particularmente, mais agressiva sobre as populações negras, já que elas predominam as estatísticas concernentes às pessoas em situação de rua conforme vimos na seção \ref{escolaridade_cor}.\\
+
+Algumas palavras sobre a condição de nomadismo anteriormente mencionada e realidade nas ruas do Município de Belo Horizonte. Ela se assemelha ao que Hannah Arendt descreveu sobre os apátridas sob suspeita de um delito \citep[p.~295]{apatrida}. Para a pensadora, diferente do cidadão que no caso de ser suspeito de cometer um delito e ter a prerrogativa da presunção de inocência assegurada em um Estado democrático de direito, o sem-pátria fica à mercê do arbítrio alheio, do poder de polícia sem controle e das arbitrariedades daqueles agentes que executam despudoradamente ordens superiores por meio da violência. Essa é a face do poder de polícia do Estado, entre tantas outras, que mais se acerca do processo de morte, pois passa da legalidade do uso legítimo da força em situações pontuais para a perpetração generalizada de abusos físicos, psicológicos e execuções sumárias.\\
+
+Entretanto, de todos os sentidos mais dolorosos que carrega o termo ``apátrida” ou ``apólida”, o que mais parece cortar inicialmente a subjetividade humana de maneira mais profunda é a direção que o termo toma para sinonímias de violência como ``essa gente sem origem", ``sem eira nem beira", ``o sem-teto", ``não tem onde cair morto" etc. Contudo, o sinônimo de ``apátrida”, sendo assim sem ``pátria, ``apólida” ou aquele ``sem” a \emph{pólis}, sem lugar na cidade, está posto, nesse contexto da Nota Técnica, para além dos preconceitos ou ainda de seu sentido físico vivido nas ruas da cidade de Belo Horizonte. O uso da palavra ``apólida" passa a se referir sob a perspectiva da política de morte àquelas pessoas em situação de rua destituídas de direitos políticos, do direito de opinar e de decidir junto aos poderes públicos seu próprio destino. É o processo de deixar de viver a cada minuto que passa.\\ 
+
+E quem se importará com os ``apólidas”? Aqueles sem cidade, sem endereço e sem direitos? Qual será o contrapoder a indagar o executivo da administração pública belo-horizontina constituído democraticamente na cidade? Configura-se a violação do uso da discricionariedade na gestão dos dados sobre a população em situação de rua por parte da Prefeitura de Belo Horizonte ,ao cumprir mal ou mesmo descumprir seus deveres administrativos, ato arbitrário? A má gestão do CadÚnico em nível municipal viola não apenas os direitos das pessoas em situação de rua, mas principia a corrosão da linha extrema que separa a democracia dos regimes autoritários.\\
+
+
+\newpage
+\section{Considerações Finais}
+\vspace{1cm}
+
+Iniciamos as nossas considerações finais desta Nota Técnica retomando uma pergunta feita no início do documento. Como garantir direitos às pessoas em situação de rua no país e a elaboração, implantação, monitoramento e avaliação de políticas públicas em todo território nacional, sem informações confiáveis, estáveis e transparentes sobre as realidades vivenciadas por essa população?\\ 
+
+O fortalecimento das bases de dados do Cadastro Único para Programas Sociais do Governo Federal (CadÚnico) a partir da atualização, alimentação constante e estabilidade de informações fidedignas relativas às pessoas em situação de rua no município é um dever ético, administrativo e constitucional da Prefeitura de Belo Horizonte.\\
+
+Contudo, conforme se evidenciou nesta Nota Técnica, a Prefeitura de Belo Horizonte não tem cumprido suas atribuições na gestão do CadÚnico, especialmente com a população em situação de rua. A análise detalhada que realizamos dos dados disponibilizados abertamente pela Prefeitura de Belo Horizonte indicam duplicidade de informações, significativas inconsistências e pouca confiabilidade na série relativa aos registros contidos no CadÚnico.\\
+
+Do ponto de vista dos recursos financeiros referentes à gestão do CadÚnico, a decisão de buscar menos ou mesmo não coletar dados sobre a população em situação de rua não decorre da falta de dinheiro. Na subseção \ref{distri_normal}, vimos que o Fundo Nacional de Assistência Social (FNAS) tem assistido o Fundo Nacional de Assistência Social (FMAS) e este, por conseguinte, depositado fundos na conta do Município de Belo Horizonte.\\ 
+
+Contudo, conforme mostra o último relatório do CadÚnico, a relação entre recursos recebidos e o saldo disponível em conta corrente: ``mostra que o município está com uma execução baixíssima dos recursos transferidos pelo IGD-M no último ano. Importante verificar com o FMAS e o órgão financeiro do município o que aconteceu no período e fazer a reprogramação desses recursos para o ano de 2018, considerando essa disponibilidade de recursos no Plano de Ação 2018.\\ 
+
+Outro ponto a ser observado é a Portaria GM/MDS nº 517, de 20 de dezembro de 2017, que limita o repasse dos recursos do IGD-M de acordo com o montante financeiro em conta corrente do município. Reproduzimos, mais uma vez, o trecho da seção \ref{distri_normal} em que ressaltamos a relevância do estudo das médias para auxiliar o planejamento da Prefeitura de Belo Horizonte quanto à coleta de dados e ao acesso aos recursos do governo federal com base no índice de Gestão Descentralizada para os municípios (IGD-M): ``Atualmente, o IGD-M belo-horizontino é de 0,86 numa escala de 0 a 1 tendo como último repasse R\$ 282.304,49 em maio de 2021. Caso o IGD-M fosse maior, com mais dados e expansão da série histórica para mais meses, a cidade poderia ter chegado a quase meio milhão de reais ou R\$ 440.098,75”. No relatório do Governo Federal: `Os valores financeiros calculados com base no IGD-M e repassados ao município no exercício corrente somam o montante de R\$ 1.383.292,00. Em maio de 2020, havia em conta corrente do município (BL GBF FNAS) o total de R\$ 3.110.659,12”.\\
+
+Salientamos novamente que, ao deixar de angariar os recursos de nível federal, a Prefeitura de Belo Horizonte compromete o trabalho do Sistema Único de Assistência Social (SUAS) e de toda forma de auxílio direto ou indireto que as pessoas em situação de rua tanto precisam.\\ 
+
+A atualização do cadastro resulta em mais investimentos na área social, por meio da coleta de dados e sua disponibilização em forma de séries históricas, assim como mais condições para a efetivação de direitos fundamentais da população em situação de rua. Por isso, a liberdade discricionária no poder de decisão da Prefeitura deve estar restringida pelo controle de seus atos de modo que a economia do IGD-M não se torne um aparato técnico gerador de riscos à vida e gerador de morte.\\
+
+Conforme destacamos nesta Nota Técnica, a inviabilização do acesso aos dados e séries históricas sobre a população em situação de rua suscita o debate sobre o exercício dos poderes dos administradores públicos que, no caso, obriga, sobretudo, a Prefeitura de Belo Horizonte a responder por decisões arbitrárias. A conduta de todos os atos praticados na esfera pública não pode desviar-se do exercício do poder vinculado daquilo que a lei prevê.\\ 
+
+Conforme o Artigo 6º do Decreto nº 7.053 de 2009, a Prefeitura tem como uma de suas atribuições produzir, sistematizar e disseminar dados, bem como indicadores socioeconômicos e culturais sobre populações vulneráveis. A liberdade para elaborar as séries históricas não é, portanto, absoluta e sim relativa. Não foi encontrada qualquer evidência material quanto à impossibilidade de cumprir com esse dever por ruptura de poder hierárquico ou indisciplina verificada entre os agentes subordinados que atuam na linha de frente da coleta de dados sobre as pessoas em situação de rua.\\ 
+
+Alertamos, novamente, para a nulidade daqueles atos que, ao ultrapassarem a linha daquilo que define a lei, também respondem por atos arbitrários e são passíveis de correção judicial. Os princípios da legalidade, impessoalidade e publicidade, previstos no Artigo 37º da Constituição Federal de 1988, são alguns dos principais pilares que lastreiam juridicamente a produção de séries históricas e a alimentação do CadÚnico.\\
+
+Para finalizar, retomamos o argumento que não é provável que a administração pública belo-horizontina seja capaz de dimensionar as relações causais e identificar de maneira adequada repetições de padrões sobre a população em situação de rua sem a valorização do corpo de trabalhadores na linha de frente da Política de Assistência Social no município.\\
+
+Conforme já mencionado neste documento, lamentavelmente, essas(es) profissionais, tão vitais para a gestão do CadÚnico e toda a política pública de Assistência Social do município, continuam à espera de uma resposta positiva do Governo Federal e da Prefeitura de Belo Horizonte quanto à inclusão nos grupos prioritários da vacinação no enfrentamento da pandemia da COVID-19.
+
+O diálogo com as(os) trabalhadoras(es) da Política Pública de Assistência Social do município será fundamental para que a Prefeitura de Belo Horizonte identifique e corrija rapidamente todas as falhas assim como inconsistências na gestão do CadÚnico, além da construção coletiva de estratégias efetivas para a atualização dos cadastros e inclusão de novas pessoas em situação de rua na base de dados do Cadastro Único para Programas Sociais do Governo Federal.\\ 
+
+Em plena pandemia da COVID-19, qualquer que seja o movimento da Prefeitura de Belo Horizonte no sentido oposto à atualização urgente e rápida do CadÚnico deverá ser compreendido como a escolha e adoção deliberada de uma Necropolítica, determinada pela lógica da Necroeconomia, na qual a política de fazer e deixar morrer é considerada economicamente mais viável financeiramente que a promoção e o fortalecimento de modos de (re)existir na cidade.\\
+
+%\bibliographystyle{apacite}
+\bibliographystyle{apalike}
+
+\bibliography{rbib}
+%\bibliographystyle{apa}
+
+\end{document}
