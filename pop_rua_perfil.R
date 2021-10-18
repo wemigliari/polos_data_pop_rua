@@ -15,7 +15,7 @@ level_order <- factor(perfil$Data, level = c('Set 2020', 'Out 2020', 'Nov 2020',
 
 
 ggplot(perfil, aes(x=level_order, y=perfil$Total)) +
-  geom_bar(stat="identity", fill=c("orange", "orange", "orange", "orange", "orange", "brown", "brown", "orange", "orange", "orange"))+
+  geom_bar(stat="identity", fill=c("darkgray", "darkgray", "darkgray", "darkgray", "darkgray", "black", "black", "darkgray", "darkgray", "darkgray"))+
   labs(title=" ", x =" ", y = "") +
   geom_text(aes(label=perfil$Total), vjust=1.6, color="white", size=3.5)+
   theme_minimal() +
@@ -36,14 +36,14 @@ level_order <- factor(perfil2$perfil.Data, level = c('Set 2020', 'Out 2020', 'No
 ggplot(perfil2, aes(x=level_order, y=value, fill=variable)) +
   geom_bar(stat='identity', position='dodge') +
   theme_light(base_size = 11) +
-  scale_fill_manual(values=c("orange", "brown"), 
+  scale_fill_manual(values=c("black", "darkgray"), 
                     name="Recebimento do Bolsa Família",
                     labels=c("Não", "Sim")) +
   labs(title=" ", x =" ", y = " ") +
   theme(axis.text.x = element_text(face="bold", color="black", 
-                             size=6)) +
-  theme(legend.title = element_text(size=8)) +
-  theme(legend.text = element_text(size=8)) +
+                             size=12)) +
+  theme(legend.title = element_text(size=12)) +
+  theme(legend.text = element_text(size=12)) +
   theme(legend.position="bottom")
 
 #### Sexo
@@ -150,6 +150,19 @@ ggplot(perfil_cor2, aes(x=level_order, y=value, fill=variable)) +
                                    size=6)) +
   theme(legend.title = element_text(size=8)) +
   theme(legend.text = element_text(size=8)) +
+  theme(legend.position="bottom")
+
+ggplot(perfil_cor2, aes(x=level_order, y=value, fill=variable)) +
+  geom_bar(position="stack", stat="identity") +
+  theme_light(base_size = 11) +
+  scale_fill_manual(values=c("red", "#808080", "gold", "#a9a9a9", "#dcdcdc", "#4c3100"), 
+                    name="",
+                    labels=c("Amarela", "Branca", "Indígena", "Parda", "Preta", "Não Informado")) +
+  labs(title=" ", x =" ", y = " ") +
+  theme(axis.text.x = element_text(face="bold", color="black", 
+                                   size=12)) +
+  theme(legend.title = element_text(size=12)) +
+  theme(legend.text = element_text(size=12)) +
   theme(legend.position="bottom")
 
 ##### Renda
