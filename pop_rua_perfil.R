@@ -35,15 +35,16 @@ level_order <- factor(perfil2$perfil.Data, level = c('Set 2020', 'Out 2020', 'No
 
 ggplot(perfil2, aes(x=level_order, y=value, fill=variable)) +
   geom_bar(stat='identity', position='dodge') +
-  theme_light(base_size = 11) +
+  theme_light(base_size = 13) +
   scale_fill_manual(values=c("black", "darkgray"), 
                     name="Recebimento do Bolsa Família",
                     labels=c("Não", "Sim")) +
   labs(title=" ", x =" ", y = " ") +
+  geom_text(aes(label=perfil2$value), position = position_dodge(width= 1), vjust= 1.6, color="white", size = 4.5) +
   theme(axis.text.x = element_text(face="bold", color="black", 
                              size=12)) +
-  theme(legend.title = element_text(size=12)) +
-  theme(legend.text = element_text(size=12)) +
+  theme(legend.title = element_text(size=13)) +
+  theme(legend.text = element_text(size=13)) +
   theme(legend.position="bottom")
 
 #### Sexo
